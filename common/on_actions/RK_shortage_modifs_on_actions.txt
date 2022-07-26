@@ -1,0 +1,513 @@
+# percentage_of_factories_filled and its refinery counterpart ultimately ends up 
+# having the value of the percentage of factories not filled
+on_actions = {
+	on_daily = {
+		effect = {
+			every_country = {
+				THIS = {
+					################### GRAIN ############################
+					if = {
+						limit = {
+							AND = {
+								check_variable = {
+									total_grain_surplus < 0
+								}
+								check_variable = {
+									grain_needed_by_people > 0
+								}
+							}
+						}
+						set_variable = {
+							percentage_of_occupied_fed = 0
+						}
+						set_variable = {
+							percentage_of_core_fed = 0
+						}
+					
+						set_variable = {
+							available_grain = total_grain_surplus
+						}
+						add_to_variable = {
+							available_grain = grain_needed_by_people
+						}
+						clamp_variable = {
+							var = available_grain
+							min = 0
+							max = grain_needed_by_people
+						}
+						############# PERCENT OF ALL CORE AND OCCUPIED THAT CAN BE FED #####################
+						set_variable = {
+							percentage_of_people_fed = available_grain
+						}
+						divide_variable = {
+							percentage_of_people_fed = grain_needed_by_people
+						}
+						##########################################################################################
+						# No Priority Law
+						set_variable = {
+							percentage_of_occupied_fed = percentage_of_people_fed
+						}
+						set_variable = {
+							percentage_of_core_fed = percentage_of_people_fed
+						}
+						if = {
+							limit = {
+								check_variable = {
+									total_occupied_cost > 0
+								}
+							}
+							# Prioritize Occupied Law
+							if = {
+								limit = {
+									has_idea = prioritize_occupied_people
+								}
+								multiply_variable = {
+									percentage_of_occupied_fed = 1.5 # Increase ratio that occupied population recieves food by 1.5
+								}
+								clamp_variable = {
+									var = percentage_of_occupied_fed
+									min = 0
+									max = 1
+								}
+								set_variable = {
+									num_of_occupied_fed = total_occupied_cost
+								}
+								multiply_variable = {
+									num_of_occupied_fed = percentage_of_occupied_fed
+								}
+								# deal with cases when num_of_occupied_fed goes over maximum
+								clamp_variable = {
+									var = num_of_occupied_fed
+									min = 0
+									max = available_grain
+								}
+								set_variable = {
+									percentage_of_occupied_fed = num_of_occupied_fed
+								}
+								divide_variable = {
+									percentage_of_occupied_fed = total_occupied_cost
+								}
+								# find how much of the core population can be fed
+								set_variable = {
+									num_of_core_fed = available_grain
+								}
+								subtract_from_variable = {
+									num_of_core_fed = num_of_occupied_fed
+								}
+								set_variable = {
+									percentage_of_core_fed = num_of_core_fed
+								}
+								divide_variable = {
+									percentage_of_core_fed = total_core_cost
+								}
+							}
+							# Prioritize Core law
+							else_if = {
+								limit = {
+									has_idea = prioritize_your_people
+								}
+								multiply_variable = {
+									percentage_of_core_fed = 1.5 # Increase ratio that core population recieves food by 1.5
+								}
+								clamp_variable = {
+									var = percentage_of_core_fed
+									min = 0
+									max = 1
+								}
+								set_variable = {
+									num_of_core_fed = total_core_cost
+								}
+								multiply_variable = {
+									num_of_core_fed = percentage_of_core_fed
+								}
+								# deal with cases when num_of_core_fed goes over maximum #
+								clamp_variable = {
+									var = num_of_core_fed
+									min = 0
+									max = available_grain
+								}
+								set_variable = {
+									percentage_of_core_fed = num_of_core_fed
+								}
+								divide_variable = {
+									percentage_of_core_fed = total_core_cost
+								}
+								# find percentage of occupied fed
+								set_variable = {
+									num_of_occupied_fed = available_grain
+								}
+								subtract_from_variable = {
+									num_of_occupied_fed = num_of_core_fed
+								}
+								set_variable = {
+									percentage_of_occupied_fed = num_of_occupied_fed
+								}
+								divide_variable = {
+									percentage_of_occupied_fed = total_occupied_cost
+								}
+							}
+							# Feed occupied first
+							else_if = {
+								limit = {
+									has_idea = feed_occupied_people_first
+								}
+								set_variable = {
+									percentage_of_occupied_fed = available_grain
+								}
+								divide_variable = {
+									percentage_of_occupied_fed = total_occupied_cost
+								}
+								clamp_variable = {
+									var = percentage_of_occupied_fed
+									min = 0
+									max = 1
+								}
+								set_variable = {
+									percentage_of_core_fed = available_grain
+								}
+								subtract_from_variable = {
+									percentage_of_core_fed = total_occupied_cost
+								}
+								divide_variable = {
+									percentage_of_core_fed = total_core_cost
+								}
+								clamp_variable = {
+									var = percentage_of_core_fed
+									min = 0
+									max = 1
+								}
+							}
+							# Feed Core First Law
+							else_if = {
+								limit = {
+									has_idea = feed_your_people_first
+								}
+								set_variable = {
+									percentage_of_core_fed = available_grain
+								}
+								divide_variable = {
+									percentage_of_core_fed = total_core_cost
+								}
+								clamp_variable = {
+									var = percentage_of_core_fed
+									min = 0
+									max = 1
+								}
+								set_variable = {
+									percentage_of_occupied_fed = available_grain
+								}
+								subtract_from_variable = {
+									percentage_of_occupied_fed = total_core_cost
+								}
+								divide_variable = {
+									percentage_of_occupied_fed = total_occupied_cost
+								}
+								clamp_variable = {
+									var = percentage_of_occupied_fed
+									min = 0
+									max = 1
+								}
+							}
+							set_variable = {
+								pcnt_of_core_not_fed = percentage_of_core_fed
+							}
+							set_variable = {
+								pcnt_of_occ_not_fed = percentage_of_occupied_fed
+							}
+							subtract_from_variable = {
+								pcnt_of_core_not_fed = 1
+							} 
+							subtract_from_variable = {
+								pcnt_of_occ_not_fed = 1
+							}
+						}
+						else = {
+							set_variable = {
+								pcnt_of_core_not_fed = percentage_of_core_fed
+							}
+							subtract_from_variable = {
+								pcnt_of_core_not_fed = 1
+							} 
+							set_variable = {
+								pcnt_of_occ_not_fed = severe_starvation_offset
+							}
+							set_variable = {
+								percentage_of_occupied_fed = 1
+							}
+						}
+						
+						# add modifier if there isnt already one
+						if = {
+							limit = {
+								NOT = {
+									has_dynamic_modifier = {
+										modifier = RK_grain_shortage
+									}
+								}
+							}
+							add_dynamic_modifier = {
+								modifier = RK_grain_shortage
+							}
+						}
+					}
+					################### COAL ############################
+					if = {
+						limit = {
+							AND = {
+								check_variable = {
+									total_coal_surplus < 0
+								}
+								check_variable = {
+									coal_needed_by_factories_et_synths > 0
+								}
+							}
+						}
+						set_variable = {
+							percentage_of_refineries_filled = 0
+						}
+						set_variable = {
+							percentage_of_factories_filled = 0
+						}
+						set_variable = {
+							available_coal = total_coal_surplus
+						}
+						add_to_variable = {
+							available_coal = coal_needed_by_factories_et_synths
+						}
+						############# PERCENT OF ALL FACTORIES AND SYNTHS THAT CAN BE FILLED #####################
+						set_variable = {
+							percentage_of_facs_et_synths_filled = available_coal
+						}
+						divide_variable = {
+							percentage_of_facs_et_synths_filled = coal_needed_by_factories_et_synths
+						}
+						##########################################################################################
+						# Balanced Law
+						set_variable = {
+							percentage_of_refineries_filled = percentage_of_facs_et_synths_filled
+						}
+						set_variable = {
+							percentage_of_factories_filled = percentage_of_facs_et_synths_filled
+						}
+						if = {
+							limit = {
+								check_variable = {
+									total_synth_cost > 0
+								}
+							}
+							# Prioritize Refineries Law
+							if = {
+								limit = {
+									has_idea = prioritize_refineries
+								}
+								multiply_variable = {
+									percentage_of_refineries_filled = 1.5 # Increase ratio that synths recieve fuel by 1.5
+								}
+								clamp_variable = {
+									var = percentage_of_refineries_filled
+									min = 0
+									max = 1
+								}
+								set_variable = {
+									num_of_refineries_filled = total_synth_cost
+								}
+								multiply_variable = {
+									num_of_refineries_filled = percentage_of_refineries_filled
+								}
+								# deal with cases when num_of_refineries_filled goes over maximum
+								clamp_variable = {
+									var = num_of_refineries_filled
+									min = 0
+									max = available_coal
+								}
+								set_variable = {
+									percentage_of_refineries_filled = num_of_refineries_filled
+								}
+								divide_variable = {
+									percentage_of_refineries_filled = total_synth_cost
+								}
+								# find how many factories can be fueled
+								set_variable = {
+									num_of_factories_filled = available_coal
+								}
+								subtract_from_variable = {
+									num_of_factories_filled = num_of_refineries_filled
+								}
+								set_variable = {
+									percentage_of_factories_filled = num_of_factories_filled
+								}
+								divide_variable = {
+									percentage_of_factories_filled = total_factory_cost
+								}
+							}
+							# Prioritize factories law
+							else_if = {
+								limit = {
+									has_idea = prioritize_factories
+								}
+								multiply_variable = {
+									percentage_of_factories_filled = 1.5 # Increase ratio that synths recieve fuel by 1.5
+								}
+								clamp_variable = {
+									var = percentage_of_factories_filled
+									min = 0
+									max = 1
+								}
+								set_variable = {
+									num_of_factories_filled = total_factory_cost
+								}
+								multiply_variable = {
+									num_of_factories_filled = percentage_of_factories_filled
+								}
+								# deal with cases when num_of_factories_filled goes over maximum
+								clamp_variable = {
+									var = num_of_factories_filled
+									min = 0
+									max = available_coal
+								}
+								set_variable = {
+									percentage_of_factories_filled = num_of_factories_filled
+								}
+								divide_variable = {
+									percentage_of_factories_filled = total_factory_cost
+								}
+								# find how many refineries can be fueled
+								set_variable = {
+									num_of_refineries_filled = available_coal
+								}
+								subtract_from_variable = {
+									num_of_refineries_filled = num_of_factories_filled
+								}
+								set_variable = {
+									percentage_of_refineries_filled = num_of_refineries_filled
+								}
+								divide_variable = {
+									percentage_of_refineries_filled = total_synth_cost
+								}
+							}
+							# Fuel Refineries first Law
+							else_if = {
+								limit = {
+									has_idea = fuel_refineries_first
+								}
+								set_variable = {
+									percentage_of_refineries_filled = available_coal
+								}
+								divide_variable = {
+									percentage_of_refineries_filled = total_synth_cost
+								}
+								clamp_variable = {
+									var = percentage_of_refineries_filled
+									min = 0
+									max = 1
+								}
+								set_variable = {
+									percentage_of_factories_filled = available_coal
+								}
+								subtract_from_variable = {
+									percentage_of_factories_filled = total_synth_cost
+								}
+								divide_variable = {
+									percentage_of_factories_filled = total_factory_cost
+								}
+								clamp_variable = {
+									var = percentage_of_factories_filled
+									min = 0
+									max = 1
+								}
+							}
+							# Fuel Factories first Law
+							else_if = {
+								limit = {
+									has_idea = fuel_factories_first
+								}
+								set_variable = {
+									percentage_of_factories_filled = available_coal
+								}
+								divide_variable = {
+									percentage_of_factories_filled = total_factory_cost
+								}
+								clamp_variable = {
+									var = percentage_of_factories_filled
+									min = 0
+									max = 1
+								}
+								set_variable = {
+									percentage_of_refineries_filled = available_coal
+								}
+								subtract_from_variable = {
+									percentage_of_refineries_filled = total_factory_cost
+								}
+								divide_variable = {
+									percentage_of_refineries_filled = total_synth_cost
+								}
+								clamp_variable = {
+									var = percentage_of_refineries_filled
+									min = 0
+									max = 1
+								}
+							}
+							subtract_from_variable = {
+								percentage_of_refineries_filled = 1
+							} 
+							subtract_from_variable = {
+								percentage_of_factories_filled = 1
+							}
+							clamp_variable = {
+								var = percentage_of_refineries_filled
+								min = -1
+								max = 0
+							}
+							clamp_variable = {
+								var = percentage_of_factories_filled
+								min = -1
+								max = 0
+							}
+						}
+						else = {
+							set_variable = {
+								percentage_of_refineries_filled = 0
+							}
+							subtract_from_variable = {
+								percentage_of_factories_filled = 1
+							}
+							clamp_variable = {
+								var = percentage_of_factories_filled
+								min = -1
+								max = 0
+							}
+						}
+						
+						# Cap the shortage penalty for players and ai
+						set_variable = {
+							factory_output_penalty = percentage_of_factories_filled
+						}
+						set_variable = {
+							refinery_output_penalty = percentage_of_refineries_filled
+						}
+						multiply_variable = {
+							refinery_output_penalty = coal_penalty_multiplier
+						}
+						multiply_variable = {
+							factory_output_penalty = coal_penalty_multiplier
+						}
+						
+						# add modifier if there isnt already one
+						if = {
+							limit = {
+								NOT = {
+									has_dynamic_modifier = {
+										modifier = RK_coal_shortage
+									}
+								}
+							}
+							add_dynamic_modifier = {
+								modifier = RK_coal_shortage
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

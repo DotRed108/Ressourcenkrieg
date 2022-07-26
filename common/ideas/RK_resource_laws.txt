@@ -1,0 +1,374 @@
+ideas = {
+	rationing_slot = {
+		law = yes
+		use_list_view = yes
+		no_rationing = {
+			allowed = {
+				always = yes
+			}
+			cost = 10
+			removal_cost = -1
+			level = 1
+
+			ai_will_do = {
+				base = 30
+
+				modifier = {
+					factor = 2
+					
+					NOT = {
+						check_variable = {
+							total_grain_surplus < 0
+						}
+					}
+				}
+				modifier = {
+					factor = 0.1
+
+					check_variable = {
+						population_per_civilian_factory > 2000
+					}
+				}
+			}
+			default = yes
+			cancel_if_invalid = no
+		}
+		war_rationing = {
+			available = {
+				AND = {
+					NOT = {
+						has_government = market_liberal
+					}
+					OR = {
+						NOT = {
+							has_democratic_government = yes
+						}
+						threat > 0.5
+						has_war = yes
+					}
+				}
+			}
+			cost = 100
+			removal_cost = -1
+			level = 2
+
+			modifier = {
+				political_power_cost = 0.20
+			}
+			ai_will_do = {
+				base = 1
+				modifier = {
+					factor = 0
+					check_variable = {
+						percentage_of_people_fed < 0.75
+					}
+				}
+				modifier = {
+					factor = 0.5
+					num_of_civilian_factories_available_for_projects > 50
+				}
+				modifier = {
+					factor = 20
+					AND = {
+						check_variable = {
+							percentage_of_people_fed > 0.75
+						}
+						check_variable = {
+							total_grain_surplus < 0
+						}
+					}
+				}
+				modifier = {
+					factor = 2
+
+					check_variable = {
+						population_per_civilian_factory > 1500
+					}
+				}
+			}
+
+			cancel_if_invalid = no
+		}
+		subsistence_rationing = {
+			available = {
+				OR = {
+					has_government = totalist
+					AND = {
+						OR = {
+							has_government = syndicalist
+							has_dictatorship_government = yes
+						}
+						surrender_progress > 0.1
+						has_war = yes
+					}
+				}
+			}
+			cost = 200
+			removal_cost = -1
+			level = 3
+
+			modifier = {
+				political_power_cost = 0.25
+			}
+
+			ai_will_do = {
+				base = 1
+				modifier = {
+					factor = 0
+					check_variable = {
+						percentage_of_people_fed < 0.5
+					}
+				}
+				modifier = {
+					factor = 0.5
+					num_of_civilian_factories_available_for_projects > 60
+				}
+				modifier = {
+					factor = 20
+					check_variable = {
+						percentage_of_people_fed > 0.5
+					}
+				}
+				modifier = {
+					factor = 4
+
+					check_variable = {
+						population_per_civilian_factory > 2000
+					}
+				}
+				modifier = {
+					factor = 4
+
+					check_variable = {
+						population_per_civilian_factory > 4000
+					}
+				}
+			}
+
+			cancel_if_invalid = yes
+		}
+	}
+	grain_prioritization_slot = {
+		law = yes
+		use_list_view = yes
+		feed_your_people_first = {
+			available = {
+				AND = {
+					NOT = {
+						has_socialist_government = yes
+					}
+					NOT = {
+						has_government = market_liberal
+					}
+				}
+			}
+			cost = 50
+			removal_cost = -1
+
+			cancel_if_invalid = yes
+		}
+		prioritize_your_people = {
+			available = {
+				NOT = {
+					has_government = market_liberal
+				}
+			}
+			cost = 50
+			removal_cost = -1
+			default = yes
+
+			cancel_if_invalid = yes
+		}
+		no_grain_priority = {
+			available = {
+				NOT = {
+					has_government = national_populist
+				}
+			}
+			cost = 75
+			removal_cost = -1
+
+			cancel_if_invalid = yes
+		}
+		prioritize_occupied_people = {
+			available = {
+				OR = {
+					has_socialist_government = yes
+					has_government = social_democrat
+					has_government = social_liberal
+				}
+			}
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				national_populist_drift = 0.005
+			}
+
+			cancel_if_invalid = yes
+		}
+		feed_occupied_people_first = {
+			available = {
+				has_socialist_government = yes
+			}
+			cost = 200
+			removal_cost = -1
+
+			modifier = {
+				national_populist_drift = 0.015
+				stability_factor = -0.01
+			}
+
+			cancel_if_invalid = yes
+		}
+	}
+	coal_prioritization_slot = {
+		law = yes
+		use_list_view = yes
+		fuel_factories_first = {
+			allowed = {
+				always = yes
+			}
+			cost = 10
+			removal_cost = -1
+
+
+			cancel_if_invalid = yes
+		}
+		prioritize_factories = {
+			allowed = {
+				always = yes
+			}
+			cost = 10
+			removal_cost = -1
+
+			ai_will_do = {
+				base = 1
+				modifier = {
+					factor = 20
+					OR = {
+						stockpile_ratio = {
+							archetype = infantry_equipment
+							ratio < 0
+						}
+						stockpile_ratio = {
+							archetype = artillery_equipment
+							ratio < 0
+						}
+					}
+				}
+			}
+
+			cancel_if_invalid = yes
+		}
+		no_coal_priority = {
+			allowed = {
+				always = yes
+			}
+			cost = 10
+			removal_cost = -1
+			default = yes
+			ai_will_do = {
+				base = 10
+				modifier = {
+					factor = 4
+					AND = {
+						OR = {
+							stockpile_ratio = {
+								archetype = infantry_equipment
+								ratio < 0
+							}
+							stockpile_ratio = {
+								archetype = artillery_equipment
+								ratio < 0
+							}
+						}
+						AND = {
+							fuel_ratio < 0.5
+							has_war = yes
+						}
+					}
+				}
+				modifier = {
+					factor = 1000
+					check_variable = {
+						num_of_synths < 1
+					}
+				}
+			}
+			cancel_if_invalid = yes
+		}
+		prioritize_refineries = {
+			allowed = {
+				always = yes
+			}
+			cost = 10
+			removal_cost = -1
+
+			ai_will_do = {
+				base = 1
+				modifier = {
+					factor = 20
+					AND = {
+						fuel_ratio < 0.5
+						has_war = yes
+					}
+				}
+				modifier = {
+					factor = 80
+					AND = {
+						fuel_ratio < 0.05
+						has_war = yes
+					}
+				}
+			}
+
+			cancel_if_invalid = yes
+		}
+		fuel_refineries_first = {
+			allowed = {
+				always = yes
+			}
+			cost = 10
+			removal_cost = -1
+
+
+			cancel_if_invalid = yes
+		}
+	}
+	stockpile_focus_slot = {
+		law = yes
+		use_list_view = yes
+		grain_stockpile_focus = {
+			allowed = {
+				always = yes
+			}
+			cost = 30
+			removal_cost = -1
+			level = 1
+			default = yes
+
+			cancel_if_invalid = no
+		}
+		coal_stockpile_focus = {
+			allowed = {
+				always = yes
+			}
+			cost = 30
+			removal_cost = -1
+			level = 1
+
+			cancel_if_invalid = no
+		}
+		rubber_stockpile_focus = {
+			allowed = {
+				always = yes
+			}
+			cost = 30
+			removal_cost = -1
+			level = 1
+
+			cancel_if_invalid = no
+		}
+	}
+}

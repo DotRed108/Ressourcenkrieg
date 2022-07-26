@@ -1,0 +1,83 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_idea_categories"
+		texturefile = "gfx/interface/idea_categories.dds"
+		noOfFrames = 7
+	}
+	SpriteType = {
+		name = "GFX_idea_no_rationing"
+		texturefile = "gfx/interface/ideas/ration1.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_war_rationing"
+		texturefile = "gfx/interface/ideas/ration2.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_subsistence_rationing"
+		texturefile = "gfx/interface/ideas/ration3.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_feed_your_people_first"
+		texturefile = "gfx/interface/ideas/feed1.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_prioritize_your_people"
+		texturefile = "gfx/interface/ideas/feed2.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_no_grain_priority"
+		texturefile = "gfx/interface/ideas/feed3.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_prioritize_occupied_people"
+		texturefile = "gfx/interface/ideas/feed4.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_feed_occupied_people_first"
+		texturefile = "gfx/interface/ideas/feed5.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_fuel_factories_first"
+		texturefile = "gfx/interface/ideas/fuel5.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_prioritize_factories"
+		texturefile = "gfx/interface/ideas/fuel4.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_no_coal_priority"
+		texturefile = "gfx/interface/ideas/fuel3.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_prioritize_refineries"
+		texturefile = "gfx/interface/ideas/fuel2.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_fuel_refineries_first"
+		texturefile = "gfx/interface/ideas/fuel1.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_grain_stockpile_focus"
+		texturefile = "gfx/interface/ideas/s_grain.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_coal_stockpile_focus"
+		texturefile = "gfx/interface/ideas/s_coal.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_rubber_stockpile_focus"
+		texturefile = "gfx/interface/ideas/s_rubber.png"
+	}
+	spriteType = {
+		name = "GFX_idea_coal_shortage"
+		texturefile = "gfx/interface/ideas/no_coal.png"
+	}
+	spriteType = {
+		name = "GFX_idea_food_shortage"
+		texturefile = "gfx/interface/ideas/no_food.png"
+	}
+	spriteType = {
+		name = "GFX_idea_wip"
+		texturefile = "gfx/interface/ideas/WIP.png"
+	}
+}

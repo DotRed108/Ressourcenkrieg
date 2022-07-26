@@ -1,0 +1,284 @@
+@stockpile_x = 80
+@limit_x = 177
+@withdrawal_x = 274
+@deposit_x = 370
+@countdown_x = 453
+
+guiTypes = {
+
+	# Toggle button on logistics window; show main stockpile window
+	containerWindowType = {
+		name = "drs_resource_toggle_window"
+			
+		buttonType ={
+			name ="showStockpileWindow"
+			spriteType = "GFX_division_designer_button"
+			buttonFont = "hoi_18mbs"
+			buttonText = "Resource Stockpile"
+			shortcut = "shift+r"
+			position = { x=225 y=10}
+			Orientation = "UPPER_LEFT"
+		}
+	}
+
+	################################################################################################
+	
+	# Window holding list of all resources, stockpile counts, and last change
+	containerWindowType = {
+		name = "drs_stockpileWindow"
+		orientation = UPPER_LEFT
+		position = { x=-550 y=46 }
+		show_position = { x=0 y=46 }
+		show_animation_type = decelerated
+		hide_animation_type = accelerated
+		animation_time = 300
+		size = { width=550 height=190 }
+		moveable = no
+		clipping = no
+
+		background = {
+			name = "drs_Backgroundx"
+			quadTextureSprite ="GFX_tiled_window"
+		}
+
+		iconType = {
+			name ="stockpile_bg"
+			spriteType = "GFX_RK_stockpile_bg"
+			position = {x=10 y=12}
+		}
+
+		# Header row
+		instantTextBoxType = {
+			name ="RK_resource_header"
+			position = { x= 24 y = 20 }
+			font = "hoi_18mbs"
+			text = ""
+		}
+
+		instantTextBoxType = {
+			name ="RK_header_stockpile"
+			position = { x= 85 y = 11 }
+			font = "hoi_18mbs"
+			text = "Stockpile"
+		}
+
+		instantTextBoxType = {
+			name ="RK_header_limit"
+			position = { x= 195 y = 11 }
+			font = "hoi_18mbs"
+			text = "Limit"
+			maxWidth = 80
+		}
+
+		instantTextBoxType = {
+			name ="RK_header_withdrawal"
+			position = { x= 270 y = 11 }
+			font = "hoi_18mbs"
+			text = "Withdrawal"
+			maxWidth = 80
+		}
+
+		instantTextBoxType = {
+			name ="RK_header_deposit"
+			position = { x= 380 y = 11 }
+			font = "hoi_18mbs"
+			text = "Deposit"
+		}
+
+		# Grain row
+		buttonType ={
+			name ="RK_grain"
+			spriteType = "GFX_resources_strip"
+			position = { x=28 y=38 }
+			frame  = 7
+		}
+		
+		instantTextBoxType = {
+			name ="RK_grain_stockpile"
+			position = { x=@stockpile_x y = 40 }
+			font = "hoi_30header"
+			text = "[?grain_stockpile]"
+			format = right
+			maxWidth = 80
+		}
+
+		instantTextBoxType = {
+			name ="RK_grain_limit"
+			position = { x= @limit_x y = 38 }
+			font = "hoi_30header"
+			text = "[?grain_limit]"
+			format = right
+			maxWidth = 80
+		}
+
+		instantTextBoxType = {
+			name ="RK_grain_withdrawal"
+			position = { x= @withdrawal_x y = 38 }
+			font = "hoi_30header"
+			text = "[?next_grain_withdrawal]"
+			format = right
+			maxWidth = 80
+		}
+
+		instantTextBoxType = {
+			name ="RK_grain_deposit"
+			position = { x= @deposit_x y = 38 }
+			font = "hoi_30header"
+			text = "[?grain_deposit]"
+			format = right
+			maxWidth = 80
+		}
+
+		instantTextBoxType = {
+			name ="RK_grain_countdown"
+			position = { x= @countdown_x y = 38 }
+			font = "hoi_30header"
+			text = "[?days_till_out_of_grain]d"
+			format = right
+			maxWidth = 80
+		}
+
+		# Coal row
+		buttonType ={
+			name ="RK_coal"
+			spriteType = "GFX_resources_strip"
+			position = { x = 30 y = 90 }
+			frame  = 8
+		}
+		
+		instantTextBoxType = {
+			name ="RK_coal_stockpile"
+			position = { x= @stockpile_x y = 88 }
+			font = "hoi_30header"
+			text = "[?coal_stockpile]"
+			format = right
+			maxWidth = 80
+		}
+
+		instantTextBoxType = {
+			name ="RK_coal_limit"
+			position = { x= @limit_x y = 88 }
+			font = "hoi_30header"
+			text = "[?coal_limit]"
+			format = right
+			maxWidth = 80
+		}
+
+		instantTextBoxType = {
+			name ="RK_coal_withdrawal"
+			position = { x= @withdrawal_x y = 88 }
+			font = "hoi_30header"
+			text = "[?next_coal_withdrawal]"
+			format = right
+			maxWidth = 80
+		}
+
+		instantTextBoxType = {
+			name ="RK_coal_deposit"
+			position = { x= @deposit_x y = 88 }
+			font = "hoi_30header"
+			text = "[?coal_deposit]"
+			format = right
+			maxWidth = 80
+		}
+
+		instantTextBoxType = {
+			name ="RK_coal_countdown"
+			position = { x= @countdown_x y = 88 }
+			font = "hoi_30header"
+			text = "[?days_till_out_of_coal]d"
+			format = right
+			maxWidth = 80
+		}
+
+		# Rubber row
+		buttonType ={
+			name ="RK_rubber"
+			spriteType = "GFX_resources_strip"
+			position = { x=30 y=137 }
+			frame  = 3
+		}
+		
+		instantTextBoxType = {
+			name ="RK_rubber_stockpile"
+			position = { x= @stockpile_x y = 135 }
+			font = "hoi_30header"
+			text = "[?rubber_stockpile]"
+			format = right
+			maxWidth = 80
+		}
+
+		instantTextBoxType = {
+			name ="RK_rubber_limit"
+			position = { x= @limit_x y = 135 }
+			font = "hoi_30header"
+			text = "[?rubber_limit]"
+			format = right
+			maxWidth = 80
+		}
+
+		instantTextBoxType = {
+			name ="RK_rubber_withdrawal"
+			position = { x= @withdrawal_x y = 135 }
+			font = "hoi_30header"
+			text = "[?next_rubber_withdrawal]"
+			format = right
+			maxWidth = 80
+		}
+
+		instantTextBoxType = {
+			name ="RK_rubber_deposit"
+			position = { x= @deposit_x y = 135 }
+			font = "hoi_30header"
+			text = "[?rubber_deposit]"
+			format = right
+			maxWidth = 80
+		}
+
+		instantTextBoxType = {
+			name ="RK_rubber_countdown"
+			position = { x= @countdown_x y = 135 }
+			font = "hoi_30header"
+			text = "[?days_till_out_of_rubber]d"
+			format = right
+			maxWidth = 80
+		}
+
+		# debug row 
+		instantTextBoxType = {
+			name ="debug1"
+			position = { x= 134 y = 175 }
+			font = "hoi_18mbs"
+			text = "[?num_of_factories]"
+			format = left
+			maxWidth = 80
+		}
+
+		instantTextBoxType = {
+			name ="debug2"
+			position = { x= 244 y = 175 }
+			font = "hoi_18mbs"
+			text = "[?num_of_owned_factories]"
+			format = left
+			maxWidth = 80
+		}
+
+		instantTextBoxType = {
+			name ="debug3"
+			position = { x= 354 y = 175 }
+			font = "hoi_18mbs"
+			text = "[?num_of_controlled_factories]"
+			format = left
+			maxWidth = 80
+		}
+
+		instantTextBoxType = {
+			name ="debug4"
+			position = { x= 464 y = 175 }
+			font = "hoi_18mbs"
+			text = "[?num_of_available_civilian_factories]"
+			format = left
+			maxWidth = 80
+		}
+	}
+}

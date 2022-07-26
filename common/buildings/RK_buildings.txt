@@ -1,0 +1,59 @@
+buildings = {
+	rubber_stockpile_facility = {
+		show_on_map = 1
+		base_cost = 99999999
+		icon_frame = 10
+		#local_resources_oil = 1 # May use local_resources_ + any resource name
+		local_resources_rubber = 1		# May use local_resources_ + any resource name
+		refinery = yes
+		max_level = 999		# This is the max unlock level
+		shares_slots = yes
+		show_modifier = yes
+		fuel_gain_from_states = 0		#per hour
+	}
+	grain_stockpile_facility = {
+		show_on_map = 1
+		base_cost = 99999999
+		icon_frame = 10
+		#local_resources_oil = 1 # May use local_resources_ + any resource name
+		local_resources_grain = 1		# May use local_resources_ + any resource name
+		refinery = yes
+		max_level = 999		# This is the max unlock level
+		shares_slots = yes
+		show_modifier = yes
+		fuel_gain_from_states = 0		#per hour
+	}
+	coal_stockpile_facility = {
+		show_on_map = 1
+		base_cost = 99999999
+		icon_frame = 10
+		#local_resources_oil = 1 # May use local_resources_ + any resource name
+		local_resources_coal = 1		# May use local_resources_ + any resource name
+		refinery = yes
+		max_level = 999		# This is the max unlock level
+		shares_slots = yes
+		show_modifier = yes
+		fuel_gain_from_states = 0		#per hour
+	}
+	grain_distribution_facility = {
+		show_on_map = 1
+		base_cost = 99999999
+		icon_frame = 10
+		#local_resources_oil = 1 # May use local_resources_ + any resource name
+		country_resource_cost_grain = 1		# May use local_resources_ + any resource name
+		refinery = yes
+		max_level = 999		# This is the max unlock level
+		shares_slots = yes
+		show_modifier = yes
+		fuel_gain_from_states = 0		#per hour
+	}
+	civilian_dockyard = {
+		show_on_map = 1
+		base_cost = 99999999
+		only_costal = no
+		naval_production = 1
+		icon_frame = 4
+		max_level = 999
+		shares_slots = yes
+	}
+}

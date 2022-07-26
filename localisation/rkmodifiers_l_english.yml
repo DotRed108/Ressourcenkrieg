@@ -1,0 +1,6 @@
+﻿l_english:
+  country_resource_cost_grain:0 "Grain"
+  country_resource_cost_coal:0 ""
+  RK_coal_shortage:0 "Coal Shortage"
+  RK_grain_shortage:0 "Grain Shortage"
+  RK_grain_shortage_desc: "Weekly Core Population Loss [Root.weekly_core_death_count]\nWeekly Occupied Population Loss [weekly_occ_death_count]"

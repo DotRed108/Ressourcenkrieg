@@ -1,0 +1,199 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			every_country = {
+				THIS = {
+					# sets base limits that every nation will have regardless of infrastructure
+					set_variable = {
+						base_rubber_limit = 200
+					}
+					set_variable = {
+						base_grain_limit = 350
+					}
+					set_variable = {
+						base_coal_limit = 700
+					}
+					# sets starting limit values to the base value
+					set_variable = {
+						rubber_limit = base_rubber_limit
+					}
+					set_variable = {
+						grain_limit = base_grain_limit
+					}
+					set_variable = {
+						coal_limit = base_coal_limit
+					}
+					# Calculates all building levels at start of game
+					every_controlled_state = {
+						add_to_variable = {
+							PREV.total_infrastructure_level = infrastructure_level
+						}
+						add_to_variable = {
+							PREV.num_of_synths = building_level@synthetic_refinery
+						}
+					}
+				}
+			}
+		}
+	}
+	on_weekly = {
+		effect = {
+			ROOT = {
+				############################ COSTS #################################
+				set_variable = {
+					total_infrastructure_level = 0
+				}
+				set_variable = {
+					num_of_synths = 0
+				}
+				every_controlled_state = {
+					add_to_variable = {
+						ROOT.total_infrastructure_level = infrastructure_level
+					}
+					add_to_variable = {
+						ROOT.num_of_synths = building_level@synthetic_refinery
+					}
+				}
+				# Calculate Coal needed by nation
+				set_variable = {
+					coal_needed_by_factories_et_synths = num_of_synths
+				}
+				multiply_variable = {
+					coal_needed_by_factories_et_synths = 3
+				}
+				#################### THIS VARIABLE IS USED TO APPLY MODIFIERS ################
+				set_variable = {
+					total_synth_cost = coal_needed_by_factories_et_synths
+				}
+				##############################################################################
+				add_to_variable = {
+					coal_needed_by_factories_et_synths = num_of_controlled_factories
+				}
+				#################### THIS VARIABLE IS USED TO APPLY MODIFIERS ################
+				set_variable = {
+					total_factory_cost = coal_needed_by_factories_et_synths
+				}
+				subtract_from_variable = {
+					total_factory_cost = total_synth_cost
+				}
+				##############################################################################
+				# Calculate Core and Occupied Population
+				set_variable = {
+					core_pop = 0
+				}
+				set_variable = {
+					occ_pop = 0
+				}
+				every_core_state = {
+					add_to_variable = {
+						ROOT.core_pop = state_population_k
+					}
+				}
+				set_variable = {
+					occ_pop = max_manpower_k
+				}
+				subtract_from_variable = {
+					occ_pop = core_pop
+				}
+				set_variable = {
+					total_core_cost = core_pop
+				}
+				divide_variable = {
+					total_core_cost = 1000
+				}
+				set_variable = {
+					total_occupied_cost = occ_pop
+				}
+				divide_variable = {
+					total_occupied_cost = 1000
+				}
+				round_variable = total_core_cost
+				round_variable = total_occupied_cost
+				# Calculate Grain needed by nation
+				set_variable = {
+					last_grain_needed_by_people = grain_needed_by_people
+				}
+				set_variable = {
+					grain_needed_by_people = total_occupied_cost
+				}
+				add_to_variable = {
+					grain_needed_by_people = total_core_cost
+				}
+
+
+				###################################### LIMITS ############################################
+				# Values were chosen using britain as baseline
+				# With these values Britain would be able to run off stockpiles for 1 full year assuming no extra infrastructure and WT is at 100%
+				# grain
+				set_variable = {
+					grain_limit = total_infrastructure_level
+				}
+				multiply_variable = {
+					grain_limit = 300	# grain stockpile per infrastructure level
+				}
+				multiply_variable = {
+					grain_limit = global.threat
+				}
+				add_to_variable = {
+					grain_limit = base_grain_limit
+				}
+				if = {
+					limit = {
+						has_idea = grain_stockpile_focus
+					}
+					multiply_variable = {
+						grain_limit = 1.25
+					}
+				}
+				round_variable = grain_limit
+				
+				# coal
+				set_variable = {
+					coal_limit = total_infrastructure_level
+				}
+				multiply_variable = {
+					coal_limit = 600	# coal stockpile per infrastructure level
+				}
+				multiply_variable = {
+					coal_limit = global.threat
+				}
+				add_to_variable = {
+					coal_limit = base_coal_limit
+				}
+				if = {
+					limit = {
+						has_idea = coal_stockpile_focus
+					}
+					multiply_variable = {
+						coal_limit = 1.25
+					}
+				}
+				round_variable = coal_limit
+				
+				# With this value Britain having 25 military factories on CAS would be able to keep up production for a year assuming no extra infrastructure and WT is at 100%
+				# rubber
+				set_variable = {
+					rubber_limit = total_infrastructure_level
+				}
+				multiply_variable = {
+					rubber_limit = 175	# rubber stockpile per infrastructure level
+				}
+				multiply_variable = {
+					rubber_limit = global.threat
+				}
+				add_to_variable = {
+					rubber_limit = base_rubber_limit
+				}
+				if = {
+					limit = {
+						has_idea = rubber_stockpile_focus
+					}
+					multiply_variable = {
+						rubber_limit = 1.25
+					}
+				}
+				round_variable = rubber_limit
+			}
+		}
+	}
+}

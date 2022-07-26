@@ -1,0 +1,408 @@
+on_actions = {
+	on_capitulation = {
+		effect = {
+			add_to_variable = {
+				FROM.rubber_stockpile = ROOT.rubber_stockpile
+			}
+			set_variable = {
+				ROOT.rubber_stockpile = 0
+			}
+			add_to_variable = {
+				FROM.grain_stockpile = ROOT.grain_stockpile
+			}
+			set_variable = {
+				ROOT.grain_stockpile = 0
+			}
+			add_to_variable = {
+				FROM.coal_stockpile = ROOT.coal_stockpile
+			}
+			set_variable = {
+				ROOT.coal_stockpile = 0
+			}
+		}
+	}
+	on_startup = {
+		effect = {
+			every_country = {
+				set_variable = {
+					export_ratio = 1
+				}
+			}
+		}
+	}
+	on_daily = {
+		effect = {
+			ROOT = {
+				########## RUBBER #################
+				add_offsite_building = {
+					type = rubber_stockpile_facility
+					level = last_rubber_withdrawal
+				}
+				add_offsite_building = {
+					type = rubber_stockpile_facility
+					level = next_rubber_withdrawal
+				}
+				set_variable = {
+					last_rubber_withdrawal = next_rubber_withdrawal
+				}
+				multiply_variable = {
+					last_rubber_withdrawal = -1
+				}
+				set_variable = {
+					next_rubber_withdrawal = 0
+				}
+				# Resource Variables
+				set_variable = {
+					rubber_withdrawal = 0
+				}
+				set_variable = {
+					surplus_rubber = resource@rubber
+				}
+				# Calculate Needed Resources
+				set_variable = {
+					needed_rubber = last_rubber_withdrawal
+				}
+				multiply_variable = {
+					needed_rubber = -1
+				}
+				multiply_variable = {
+					surplus_rubber = -1
+				}
+				add_to_variable = {
+					needed_rubber = surplus_rubber
+				}
+				multiply_variable = {
+					surplus_rubber = -1
+				}
+				if = {
+					limit = {
+						check_variable = {
+							needed_rubber < 0
+						}
+					}
+					set_variable = {
+						needed_rubber = 0
+					}
+				}
+				# Calculate the next days withdrawals and deposits
+				if = {
+					limit = {
+						check_variable = {
+							surplus_rubber > 0
+						}
+					}
+					set_variable = {
+						rubber_deposit = surplus_rubber
+					}
+				}
+				else = {
+					set_variable = {
+						rubber_deposit = 0
+					}
+				}
+				set_variable = {
+					next_rubber_withdrawal = needed_rubber
+				}
+				if = {
+					limit = {
+						check_variable = {
+							next_rubber_withdrawal > rubber_stockpile
+						}
+					}
+					set_variable = {
+						next_rubber_withdrawal = rubber_stockpile
+					}
+				}
+				# Calculate Stockpile From desposits and Withdrawals
+				add_to_variable = {
+					rubber_stockpile = rubber_deposit
+				}
+				subtract_from_variable = {
+					rubber_stockpile = next_rubber_withdrawal
+				}
+				if = {
+					limit = {
+						check_variable = {
+							rubber_stockpile > rubber_limit
+						}
+					}
+					set_variable = {
+						rubber_stockpile = rubber_limit
+					}
+				}
+				set_variable = {
+					days_till_out_of_rubber = 0
+				}
+				if = {
+					limit = {
+						check_variable = {
+							next_rubber_withdrawal > 0
+						}
+					}
+					set_variable = {
+						days_till_out_of_rubber = rubber_stockpile
+					}
+					divide_variable = {
+						days_till_out_of_rubber = next_rubber_withdrawal
+					}
+					round_variable = days_till_out_of_rubber
+				}
+
+				########## AI GRAIN #################
+				add_offsite_building = {
+					type = grain_stockpile_facility
+					level = last_grain_withdrawal
+				}
+				add_offsite_building = {
+					type = grain_stockpile_facility
+					level = next_grain_withdrawal
+				}
+				set_variable = {
+					last_grain_withdrawal = next_grain_withdrawal
+				}
+				multiply_variable = {
+					last_grain_withdrawal = -1
+				}
+				set_variable = {
+					next_grain_withdrawal = 0
+				}
+				# Resource Variables
+				set_variable = {
+					grain_withdrawal = 0
+				}
+				set_variable = {
+					surplus_grain = resource@grain
+				}
+				#################### THIS VARIABLE IS USED TO APPLY MODIFIERS ################
+				set_variable = {
+					total_grain_surplus = surplus_grain
+				}
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					subtract_from_variable = {
+						total_grain_surplus = simulated_resource_need
+					}
+				}
+				##############################################################################
+				# Calculate Needed Resources
+				set_variable = {
+					needed_grain = last_grain_withdrawal
+				}
+				multiply_variable = {
+					needed_grain = -1
+				}
+				multiply_variable = {
+					surplus_grain = -1
+				}
+				add_to_variable = {
+					needed_grain = surplus_grain
+				}
+				multiply_variable = {
+					surplus_grain = -1
+				}
+				if = {
+					limit = {
+						check_variable = {
+							needed_grain < 0
+						}
+					}
+					set_variable = {
+						needed_grain = 0
+					}
+				}
+				# Calculate the next days withdrawals and deposits
+				if = {
+					limit = {
+						check_variable = {
+							surplus_grain > 0
+						}
+					}
+					set_variable = {
+						grain_deposit = surplus_grain
+					}
+				}
+				else = {
+					set_variable = {
+						grain_deposit = 0
+					}
+				}
+				set_variable = {
+					next_grain_withdrawal = needed_grain
+				}
+				if = {
+					limit = {
+						check_variable = {
+							next_grain_withdrawal > grain_stockpile
+						}
+					}
+					set_variable = {
+						next_grain_withdrawal = grain_stockpile
+					}
+				}
+				# Calculate Stockpile From desposits and Withdrawals
+				add_to_variable = {
+					grain_stockpile = grain_deposit
+				}
+				subtract_from_variable = {
+					grain_stockpile = next_grain_withdrawal
+				}
+				if = {
+					limit = {
+						check_variable = {
+							grain_stockpile > grain_limit
+						}
+					}
+					set_variable = {
+						grain_stockpile = grain_limit
+					}
+				}
+				set_variable = {
+					days_till_out_of_grain = 0
+				}
+				if = {
+					limit = {
+						check_variable = {
+							next_grain_withdrawal > 0
+						}
+					}
+					set_variable = {
+						days_till_out_of_grain = grain_stockpile
+					}
+					divide_variable = {
+						days_till_out_of_grain = next_grain_withdrawal
+					}
+					round_variable = days_till_out_of_grain
+				}
+				########## AI COAL #################
+				add_offsite_building = {
+					type = coal_stockpile_facility
+					level = last_coal_withdrawal
+				}
+				add_offsite_building = {
+					type = coal_stockpile_facility
+					level = next_coal_withdrawal
+				}
+				set_variable = {
+					last_coal_withdrawal = next_coal_withdrawal
+				}
+				multiply_variable = {
+					last_coal_withdrawal = -1
+				}
+				set_variable = {
+					next_coal_withdrawal = 0
+				}
+				# Resource Variables
+				set_variable = {
+					coal_withdrawal = 0
+				}
+				set_variable = {
+					surplus_coal = resource@coal
+				}
+				#################### THIS VARIABLE IS USED TO APPLY MODIFIERS ################
+				set_variable = {
+					total_coal_surplus = surplus_coal
+				}
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					subtract_from_variable = {
+						total_coal_surplus = simulated_resource_need
+					}
+				}
+				##############################################################################
+				# Calculate Needed Resources
+				set_variable = {
+					needed_coal = last_coal_withdrawal
+				}
+				multiply_variable = {
+					needed_coal = -1
+				}
+				multiply_variable = {
+					surplus_coal = -1
+				}
+				add_to_variable = {
+					needed_coal = surplus_coal
+				}
+				multiply_variable = {
+					surplus_coal = -1
+				}
+				if = {
+					limit = {
+						check_variable = {
+							needed_coal < 0
+						}
+					}
+					set_variable = {
+						needed_coal = 0
+					}
+				}
+				# Calculate the next days withdrawals and deposits
+				if = {
+					limit = {
+						check_variable = {
+							surplus_coal > 0
+						}
+					}
+					set_variable = {
+						coal_deposit = surplus_coal
+					}
+				}
+				else = {
+					set_variable = {
+						coal_deposit = 0
+					}
+				}
+				set_variable = {
+					next_coal_withdrawal = needed_coal
+				}
+				if = {
+					limit = {
+						check_variable = {
+							next_coal_withdrawal > coal_stockpile
+						}
+					}
+					set_variable = {
+						next_coal_withdrawal = coal_stockpile
+					}
+				}
+				# Calculate Stockpile From desposits and Withdrawals
+				add_to_variable = {
+					coal_stockpile = coal_deposit
+				}
+				subtract_from_variable = {
+					coal_stockpile = next_coal_withdrawal
+				}
+				if = {
+					limit = {
+						check_variable = {
+							coal_stockpile > coal_limit
+						}
+					}
+					set_variable = {
+						coal_stockpile = coal_limit
+					}
+				}
+				set_variable = {
+					days_till_out_of_coal = 0
+				}
+				if = {
+					limit = {
+						check_variable = {
+							next_coal_withdrawal > 0
+						}
+					}
+					set_variable = {
+						days_till_out_of_coal = coal_stockpile
+					}
+					divide_variable = {
+						days_till_out_of_coal = next_coal_withdrawal
+					}
+					round_variable = days_till_out_of_coal
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,26 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			every_country = {
+				set_variable = {
+					population_per_civilian_factory = max_manpower_k
+				}
+				divide_variable = {
+					population_per_civilian_factory = num_of_civilian_factories
+				}
+			}
+		}
+	}
+	on_weekly = {
+		effect = {
+			ROOT = {
+				set_variable = {
+					population_per_civilian_factory = max_manpower_k
+				}
+				divide_variable = {
+					population_per_civilian_factory = num_of_civilian_factories
+				}
+			}
+		}
+	}
+}

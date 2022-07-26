@@ -1,0 +1,10 @@
+﻿l_english:
+  PRODUCTION_MATERIALS_COAL:0 "Coal"
+  coal_desc:0 "Coal is the primary source of electricity around the world."
+  PRODUCTION_MATERIALS_GRAIN:0 "Grain"
+  grain_desc:0 "Grain is a food source excellent for long term storage."
+  resource_distributor:0 "Convoy"
+  grain_distributor:0 "Convoy"
+  coal_distributor:0 "Convoy"
+  coal_distributor_desc:0 "Carries Goods across water"
+  grain_distributor_desc:0 "Carries Goods across water"

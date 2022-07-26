@@ -1,0 +1,203 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			every_country = {
+				THIS = {
+					if = {
+						limit = {
+							is_ai = yes
+						}
+						set_variable = {
+							needs_distributor = 1
+						}
+						add_offsite_building = {
+							type = civilian_dockyard
+							level = 100
+						}
+					}
+					set_variable = {
+						grain_needed_by_people = max_manpower_k
+					}
+					divide_variable = {
+						grain_needed_by_people = 1000
+					}
+					round_variable = grain_needed_by_people
+					set_variable = {
+						last_grain_needed_by_people = grain_needed_by_people
+					}
+					add_offsite_building = {
+						type = grain_distribution_facility
+						level = grain_needed_by_people
+					}
+				}
+			}
+		}
+	}
+	on_daily = {
+		effect = {
+			ROOT = {
+				if = {
+					limit = {
+						check_variable = {
+							needs_distributor = 1
+						}
+					}
+					set_variable = {
+						needs_distributor = 0
+					}
+					set_variable = {
+						can_produce_distributors = 1
+					}
+					add_equipment_production = {
+						equipment = {
+							type = coal_distributor
+						}
+						requested_factories = 1
+						progress = 0
+						amount = 1000
+					}
+					add_equipment_production = {
+						equipment = {
+							type = grain_distributor
+						}
+						requested_factories = 1
+						progress = 0
+						amount = 1000
+					}
+					set_variable = {
+						distributors_activated = 1
+					}
+					set_variable = {
+						can_produce_distributors = 0
+					}
+				} 
+				if = {
+					limit = {
+						check_variable = {
+							distributors_activated = 1
+						}
+					}
+					set_variable = {
+						can_produce_distributors = 0
+					}
+					add_offsite_building = {
+						type = civilian_dockyard
+						level = -100
+					}
+					set_variable = {
+						distributors_activated = 0
+					}
+				}
+			}
+		}
+	}
+	on_weekly = {
+		effect = {
+			ROOT = {
+				# This is where grain cost is applied
+				set_variable = {
+					grain_needed_by_distribution_facilities = grain_needed_by_people
+				}
+				# Rationing has to be done here before rounding
+				if = {
+					limit = {
+						has_idea = war_rationing
+					}
+					multiply_variable = {
+						grain_needed_by_distribution_facilities = 0.75
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = subsistence_rationing
+					}
+					multiply_variable = {
+						grain_needed_by_distribution_facilities = 0.50
+					}
+				}
+				round_variable = grain_needed_by_distribution_facilities
+				add_offsite_building = {
+					type = grain_distribution_facility
+					level = grain_needed_by_people
+				}
+				multiply_variable = {
+					last_grain_needed_by_people = -1
+				}
+				add_offsite_building = {
+					type = grain_distribution_facility
+					level = last_grain_needed_by_people
+				}
+				set_variable = {
+					last_grain_needed_by_people = grain_needed_by_people
+				}
+			}
+		}
+	}
+	on_daily = {
+		effect = {
+			ROOT = {
+				# checks if nation has ever imported coal or grain
+				set_variable = {
+					simulated_resource_need = 0
+				}
+				if = {
+					limit = {
+						AND = {
+							check_variable = {
+								surplus_coal < 1
+							}
+							is_ai = yes
+						}
+					}
+					add_to_variable = {
+						simulated_resource_need = resource@coal
+					}
+					subtract_from_variable = {
+						simulated_resource_need = resource_produced@coal
+					}
+					subtract_from_variable = {
+						simulated_resource_need = resource_imported@coal
+					}
+				}
+				else_if = {
+					limit = {
+						AND = {
+							check_variable = {
+								surplus_grainl < 1
+							}
+							is_ai = yes
+						}
+					}
+					add_to_variable = {
+						simulated_resource_need = resource@grain
+					}
+					subtract_from_variable = {
+						simulated_resource_need = resource_produced@grain
+					}
+					subtract_from_variable = {
+						simulated_resource_need = resource_imported@grain
+					}
+				}
+				else = {
+					set_variable = {
+						simulated_resource_need = 1
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							simulated_resource_need = 0
+						}
+					}
+					set_variable = {
+						needs_distributor = 1
+					}
+					add_offsite_building = {
+						type = civilian_dockyard
+						level = 100
+					}
+				}
+			}
+		}
+	}
+}

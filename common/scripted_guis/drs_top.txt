@@ -1,0 +1,43 @@
+scripted_gui = {
+	# Button on logistics window to show or hide resource stockpile window
+	drs_resource_toggle_window = {
+		context_type = player_context
+
+		window_name = "drs_resource_toggle_window"
+		parent_window_token = logistics_tab
+		
+		# visible = { yes } # visible by default
+
+		effects = {
+			showStockpileWindow_click={
+				if = {
+					limit={ check_variable={drs_stockpileWindow_isVisible = 0 }}
+					set_variable = { drs_stockpileWindow_isVisible = 1 }
+				}
+				else = {
+					clear_variable = drs_stockpileWindow_isVisible
+				}
+			}
+		}
+	}
+
+	################################################################################################
+
+	# Main window showing resources and stockpile size
+	drs_stockpileWindow = {
+		context_type = player_context
+		
+		window_name = "drs_stockpileWindow"
+		parent_window_token = logistics_tab
+		
+		visible = {
+			check_variable = { drs_stockpileWindow_isVisible = 1 }
+		}
+
+		effects = {
+		    drs_close_main_click = {
+		        set_variable = { drs_stockpileWindow_isVisible = 0 }
+		    }
+		}
+	}
+}

@@ -1,0 +1,1 @@
+-- NDefines.NProduction.CONVOY_MAX_NAV_FACTORIES_PER_LINE = 1 -- necessary for resource sinks // 15 in vanilla

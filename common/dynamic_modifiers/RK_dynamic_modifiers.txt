@@ -1,0 +1,28 @@
+RK_grain_shortage = {
+	icon = "GFX_idea_food_shortage"
+	enable = { always = yes }
+	remove_trigger = {
+		NOT = {
+			check_variable = {
+				total_grain_surplus < 0
+			}
+		}
+	}
+	stability_weekly = stability_penalty
+	compliance_growth = compliance_penalty
+}
+
+RK_coal_shortage = {
+	icon = "GFX_idea_coal_shortage"
+	enable = { always = yes }
+	remove_trigger = {
+		NOT = {
+			check_variable = {
+				total_coal_surplus < 0
+			}
+		}
+	}
+	industrial_capacity_factory = factory_output_penalty
+	industrial_capacity_dockyard = factory_output_penalty
+	fuel_gain_factor_from_states = refinery_output_penalty
+}
