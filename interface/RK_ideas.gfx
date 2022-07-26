@@ -1,8 +1,8 @@
 spriteTypes = {
-	spriteType = {
+	SpriteType = {
 		name = "GFX_idea_categories"
 		texturefile = "gfx/interface/idea_categories.dds"
-		noOfFrames = 7
+		noOfFrames = 9
 	}
 	SpriteType = {
 		name = "GFX_idea_no_rationing"

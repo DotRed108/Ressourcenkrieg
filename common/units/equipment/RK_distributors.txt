@@ -1,7 +1,7 @@
 equipments = {
 
 	resource_distributor = {
-		year = 1910
+		year = 1912
 
 		is_archetype = yes
 		type = convoy
@@ -43,14 +43,13 @@ equipments = {
 	}
 
 	coal_distributor = {
-		year = 1909
+		year = 1912
 		can_be_produced = {
 			check_variable = {
 				can_produce_distributors = 1
 			}
 		}
 		archetype = resource_distributor
-		picture = archetype_convoy
 		type = { 
 			convoy
 		}
@@ -61,14 +60,13 @@ equipments = {
 		}
 	}
 	grain_distributor = {
-		year = 1909
+		year = 1912
 		can_be_produced = {
 			check_variable = {
 				can_produce_distributors = 1
 			}
 		}
 		archetype = resource_distributor
-		picture = archetype_convoy
 		type = { 
 			convoy
 		}

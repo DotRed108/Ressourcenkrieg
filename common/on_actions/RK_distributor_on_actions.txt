@@ -5,7 +5,8 @@ on_actions = {
 				THIS = {
 					if = {
 						limit = {
-							is_ai = yes
+							always = yes
+							# is_ai = yes // removed so that players could recieve insufficient resource notifications
 						}
 						set_variable = {
 							needs_distributor = 1
