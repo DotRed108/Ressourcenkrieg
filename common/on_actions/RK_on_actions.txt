@@ -148,7 +148,7 @@ on_actions = {
 					round_variable = days_till_out_of_rubber
 				}
 
-				########## AI GRAIN #################
+				########## GRAIN #################
 				add_offsite_building = {
 					type = grain_stockpile_facility
 					level = last_grain_withdrawal
@@ -275,7 +275,7 @@ on_actions = {
 					}
 					round_variable = days_till_out_of_grain
 				}
-				########## AI COAL #################
+				########## COAL #################
 				add_offsite_building = {
 					type = coal_stockpile_facility
 					level = last_coal_withdrawal

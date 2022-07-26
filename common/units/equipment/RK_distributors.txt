@@ -53,6 +53,7 @@ equipments = {
 		type = { 
 			convoy
 		}
+		sprite = convoy
 		active = yes
 		priority = 100000
 		resources = {
@@ -70,6 +71,7 @@ equipments = {
 		type = { 
 			convoy
 		}
+		sprite = convoy
 		active = yes
 		priority = 100000
 		resources = {
