@@ -53,7 +53,7 @@ ideas = {
 			level = 2
 
 			modifier = {
-				political_power_cost = 0.20
+				political_power_cost = 0.1
 			}
 			ai_will_do = {
 				base = 1
@@ -108,7 +108,7 @@ ideas = {
 			level = 3
 
 			modifier = {
-				political_power_cost = 0.25
+				political_power_cost = 0.2
 			}
 
 			ai_will_do = {
@@ -201,10 +201,6 @@ ideas = {
 			cost = 100
 			removal_cost = -1
 
-			modifier = {
-				national_populist_drift = 0.005
-			}
-
 			cancel_if_invalid = yes
 		}
 		feed_occupied_people_first = {
@@ -213,11 +209,6 @@ ideas = {
 			}
 			cost = 200
 			removal_cost = -1
-
-			modifier = {
-				national_populist_drift = 0.015
-				stability_factor = -0.01
-			}
 
 			cancel_if_invalid = yes
 		}

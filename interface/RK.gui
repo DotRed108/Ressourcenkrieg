@@ -249,7 +249,7 @@ guiTypes = {
 			name ="debug1"
 			position = { x= 134 y = 175 }
 			font = "hoi_18mbs"
-			text = "[?num_of_factories]"
+			text = "[?severe_starvation_offset]"
 			format = left
 			maxWidth = 80
 		}
@@ -258,7 +258,7 @@ guiTypes = {
 			name ="debug2"
 			position = { x= 244 y = 175 }
 			font = "hoi_18mbs"
-			text = "[?num_of_owned_factories]"
+			text = "[?severe_starvation_offset]"
 			format = left
 			maxWidth = 80
 		}
@@ -276,7 +276,7 @@ guiTypes = {
 			name ="debug4"
 			position = { x= 464 y = 175 }
 			font = "hoi_18mbs"
-			text = "[?num_of_available_civilian_factories]"
+			text = "[?core_manpower_multiplier]"
 			format = left
 			maxWidth = 80
 		}

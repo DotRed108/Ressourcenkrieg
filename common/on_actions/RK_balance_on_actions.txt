@@ -2,7 +2,7 @@ on_actions = {
 	on_startup = {
 		effect = {
 			set_variable = {
-				global.default_starvation_offset = 0.6
+				global.default_starvation_offset = 0.3
 			}
 			set_variable = {
 				global.default_coal_penalty_multiplier = 0.3
@@ -27,8 +27,17 @@ on_actions = {
 				# All balancing of food shortage effects should be done through this number
 				# Changing this will have a parabolic effect
 				# Increaseing or decreasing outside the range -1 thru 1 will not further amplify the effects
-				set_variable = {
-					severe_starvation_offset = global.default_starvation_offset
+				if = {
+					limit = {
+						is_major = yes
+					}
+					set_variable = {
+						severe_starvation_offset = 0.6
+					}
+				} else = {
+					set_variable = {
+						severe_starvation_offset = global.default_starvation_offset
+					}
 				}
 				if = {
 					limit = {
@@ -101,116 +110,49 @@ on_actions = {
 	on_monthly = {
 		effect = {
 			ROOT = {
+				# this makes it so that ai nations with very small economies do not have to deal with the grain/coal system until they get bigger. This does not take into consideration offsite buildings
 				if = {
 					limit = {
-						check_variable = {
-							global.monthly_increment = 0
+						NOT = {
+							num_of_owned_factories > 4
 						}
+						is_ai = yes
 					}
-					if = {
-						limit = {
-							OR = {
-								has_country_flag = is_in_middle_east
-								has_country_flag = is_in_africa
-								has_country_flag = is_in_oceania
-								has_country_flag = is_in_central_america
-								has_country_flag = is_in_south_america
-								has_country_flag = rk_is_in_balkans
-							}
-						}
-						set_variable = {
-							severe_starvation_offset = 0.4
-						}
+					set_variable = {
+						grain_stockpile = grain_limit
 					}
-					else_if = {
-						limit = {
-							OR = {
-								has_country_flag = is_in_asia
-								has_country_flag = is_in_india
-							}
-						}
-						set_variable = {
-							severe_starvation_offset = 0.3
-						}
-					}
-					else_if = {
-						limit = {
-							is_italian_tag = yes
-						}
-						set_variable = {
-							severe_starvation_offset = 0.4
-						}
+					set_variable = {
+						coal_stockpile = coal_limit
 					}
 				}
+				# grain balancing
 				if = {
 					limit = {
 						check_variable = {
-							severe_starvation_offset < global.default_starvation_offset
-						}
-					}
-					if = {
-						limit = {
-							is_italian_tag = yes
-							check_variable = {
-								num_of_controlled_factories > 25
-							}
-						}
-						set_variable = {
-							severe_starvation_offset = global.default_starvation_offset
-						}
-					}
-					if = {
-						limit = {
-							OR = {
-								has_country_flag = is_in_asia
-							}
-							check_variable = {
-								num_of_controlled_factories > 35
-							}
-						}
-						set_variable = {
-							severe_starvation_offset = global.default_starvation_offset
-						}
-					}
-					if = {
-						limit = {
-							OR = {
-								has_country_flag = is_in_africa
-								has_country_flag = is_in_middle_east
-								has_country_flag = is_in_oceania
-								has_country_flag = is_in_central_america
-								has_country_flag = is_in_south_america
-								has_country_flag = rk_is_in_balkans
-							}
-							check_variable = {
-								num_of_controlled_factories > 27
-							}
-						}
-						set_variable = {
-							severe_starvation_offset = global.default_starvation_offset
-						}
-					}
-				}
-				if = {
-					limit = {
-						check_variable = {
-							severe_starvation_offset = 0 
+							severe_starvation_offset = 0
 						}
 					}
 					set_variable = {
-						severe_starvation_offset = 0.1
+						severe_starvation_offset = global.default_starvation_offset
 					}
-				}
-				if = {
+				} else_if = {
 					limit = {
-						check_variable = {
-							coal_penalty_multiplier = 0 
-						}
+						num_of_controlled_factories < 25
 					}
 					set_variable = {
-						coal_penalty_multiplier = global.default_coal_penalty_multiplier
+						severe_starvation_offset = 0.3
+					}
+				} else_if = {
+					limit = {
+						check_variable = {
+							severe_starvation_offset < 0.6
+						}
+					}
+					add_to_variable = {
+						severe_starvation_offset = 0.05
 					}
 				}
+				# coal balancing
 				if = {
 					limit = {
 						is_major = yes
@@ -218,8 +160,8 @@ on_actions = {
 							coal_penalty_multiplier < 0.8
 						}
 					}
-					set_variable = {
-						coal_penalty_multiplier = 0.8
+					add_to_variable = {
+						coal_penalty_multiplier = 0.05
 					}
 				} else_if = {
 					limit = {
@@ -230,8 +172,17 @@ on_actions = {
 							coal_penalty_multiplier < 0.5
 						}
 					}
+					add_to_variable = {
+						coal_penalty_multiplier = 0.05
+					}
+				} else_if = {
+					limit = {
+						check_variable = {
+							coal_penalty_multiplier = 0 
+						}
+					}
 					set_variable = {
-						coal_penalty_multiplier = 0.5
+						coal_penalty_multiplier = global.default_coal_penalty_multiplier
 					}
 				}
 			}

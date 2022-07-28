@@ -80,8 +80,9 @@ idea_categories = {
 		slot = stockpile_focus_slot
 
 		ledger = civilian
+		
 		cost = 100
-		removal_cost = -1
+		removal_cost = 0
 	}
 
 	academy_spirit = {

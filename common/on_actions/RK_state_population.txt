@@ -33,8 +33,8 @@ on_actions = {
 						max = mean
 						min = 0
 					}
-					divide_variable = {
-						food_shortage_depth_mult = 3
+					multiply_variable = {
+						food_shortage_depth_mult = 0.25
 					}
 					set_variable = {
 						food_shortage_depth_temp2 = food_shortage_depth
@@ -59,8 +59,8 @@ on_actions = {
 						set_variable = {
 							food_shortage_depth_temp = food_shortage_depth
 						}
-						divide_variable = {
-							food_shortage_depth_temp = 3
+						multiply_variable = {
+							food_shortage_depth_temp = 0.25
 						}
 						multiply_variable = {
 							food_shortage_depth_temp = food_shortage_depth
@@ -71,6 +71,9 @@ on_actions = {
 						add_to_variable = {
 							food_shortage_depth_mult = food_shortage_depth_temp
 						}
+					}
+					multiply_variable = {
+						food_shortage_depth_mult = 0.5 # this modifies the importance of food shortage length
 					}
 					########### CORE ##############
 					set_variable = {
@@ -91,10 +94,16 @@ on_actions = {
 						core_manpower_multiplier = core_manpower_multiplier
 					}
 					multiply_variable = {
+						core_manpower_multiplier = 3 # this modifies the importance of shortage severity
+					}
+					set_variable = {
+						hoooo = core_manpower_multiplier
+					}
+					multiply_variable = {
 						core_manpower_multiplier = food_shortage_depth_mult
 					}
 					divide_variable = {
-						core_manpower_multiplier = -200	# might be a good idea to clamp between -.2 and 0
+						core_manpower_multiplier = -200	# change to a multiplication by -0.005
 					}
 					clamp_variable = {
 						var = core_manpower_multiplier
@@ -120,10 +129,13 @@ on_actions = {
 						occupied_manpower_multiplier = occupied_manpower_multiplier
 					}
 					multiply_variable = {
+						occupied_manpower_multiplier = 3 # this modifies the importance of shortage severity
+					}
+					multiply_variable = {
 						occupied_manpower_multiplier = food_shortage_depth_mult
 					}
 					divide_variable = {
-						occupied_manpower_multiplier = -200	# might be a good idea to clamp between -.2 and 0
+						occupied_manpower_multiplier = -200	# change to a multiplication by -0.005
 					}
 					clamp_variable = {
 						var = occupied_manpower_multiplier
@@ -161,25 +173,44 @@ on_actions = {
 					set_variable = {
 						stability_penalty = core_manpower_multiplier
 					}
-					divide_variable = {
-						stability_penalty = 20
+					multiply_variable = {
+						stability_penalty = 0.025
 					}
 					set_variable = {
 						compliance_penalty = occupied_manpower_multiplier
 					}
-					multiply_variable = {
-						compliance_penalty = 2
-					}
 					set_variable = {
 						resistance_penalty = compliance_penalty
 					}
-					divide_variable = {
-						resistance_penalty = 10
+					multiply_variable = {
+						resistance_penalty = -0.1
+					}
+					if = {
+						limit = {
+							check_variable = {
+								occupied_manpower_multiplier > core_manpower_multiplier
+							}
+							NOT = {
+								check_variable = {
+									occupied_manpoer_multiplier = 0
+								}
+							}
+						}
+						set_variable = {
+							ideology_penalty = core_manpower_multiplier
+						}
+						subtract_from_variable = {
+							ideology_penalty = occupied_manpower_multiplier
+						}
+					} else = {
+						set_variable = {
+							ideology_penalty = 0
+						}
 					}
 				}
 				else = {
 					subtract_from_variable = {
-						food_shortage_depth = 6
+						food_shortage_depth = 2
 					}
 				}
 			}

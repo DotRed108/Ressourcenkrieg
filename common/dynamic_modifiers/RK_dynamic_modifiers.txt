@@ -10,6 +10,8 @@ RK_grain_shortage = {
 	}
 	stability_weekly = stability_penalty
 	compliance_growth = compliance_penalty
+	resistance_growth = resistance_penalty
+	national_populist_drift = ideology_penalty
 }
 
 RK_coal_shortage = {
