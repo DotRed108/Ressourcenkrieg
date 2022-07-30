@@ -8,16 +8,49 @@ guiTypes = {
 
 	# Toggle button on logistics window; show main stockpile window
 	containerWindowType = {
-		name = "drs_resource_toggle_window"
+		name = "RK_resource_toggle_window"
 			
 		buttonType ={
 			name ="showStockpileWindow"
 			spriteType = "GFX_division_designer_button"
 			buttonFont = "hoi_18mbs"
-			buttonText = "Resource Stockpile"
+			buttonText = "Resource Stockpiles"
 			shortcut = "shift+r"
 			position = { x=225 y=10}
 			Orientation = "UPPER_LEFT"
+		}
+	}
+
+
+	# Resource icon buttons in stockpile tab
+	containerWindowType = {
+		name = "grain_resource_toogle_window"
+		position = { x=-550 y=47 }
+		show_position = { x=0 y=47 }
+		show_animation_type = decelerated
+		hide_animation_type = accelerated
+		animation_time = 300
+
+		buttonType ={
+			name ="RK_grain"
+			spriteType = "GFX_resources_strip"
+			position = { x=28 y=39 }
+			frame  = 7
+		}
+	}
+	containerWindowType = {
+		name = "coal_resource_toogle_window"
+		position = { x=-550 y=46 }
+		show_position = { x=0 y=46 }
+		show_animation_type = decelerated
+		hide_animation_type = accelerated
+		animation_time = 300
+
+		buttonType ={
+			name ="RK_coal"
+			spriteType = "GFX_resources_strip"
+			position = { x = 30 y = 90 }
+			frame  = 8
 		}
 	}
 
@@ -86,12 +119,12 @@ guiTypes = {
 		}
 
 		# Grain row
-		buttonType ={
-			name ="RK_grain"
-			spriteType = "GFX_resources_strip"
-			position = { x=28 y=38 }
-			frame  = 7
-		}
+		# buttonType ={
+		# 	name ="RK_grain"
+		# 	spriteType = "GFX_resources_strip"
+		# 	position = { x=28 y=38 }
+		# 	frame  = 7
+		# }
 		
 		instantTextBoxType = {
 			name ="RK_grain_stockpile"
@@ -139,12 +172,12 @@ guiTypes = {
 		}
 
 		# Coal row
-		buttonType ={
-			name ="RK_coal"
-			spriteType = "GFX_resources_strip"
-			position = { x = 30 y = 90 }
-			frame  = 8
-		}
+		# buttonType ={
+		# 	name ="RK_coal"
+		# 	spriteType = "GFX_resources_strip"
+		# 	position = { x = 30 y = 90 }
+		# 	frame  = 8
+		# }
 		
 		instantTextBoxType = {
 			name ="RK_coal_stockpile"
@@ -192,7 +225,7 @@ guiTypes = {
 		}
 
 		# Rubber row
-		buttonType ={
+		iconType ={
 			name ="RK_rubber"
 			spriteType = "GFX_resources_strip"
 			position = { x=30 y=137 }
@@ -245,40 +278,221 @@ guiTypes = {
 		}
 
 		# debug row 
-		instantTextBoxType = {
-			name ="debug1"
-			position = { x= 134 y = 175 }
-			font = "hoi_18mbs"
-			text = "[?severe_starvation_offset]"
-			format = left
-			maxWidth = 80
-		}
+		# instantTextBoxType = {
+		# 	name ="debug1"
+		# 	position = { x= 134 y = 175 }
+		# 	font = "hoi_18mbs"
+		# 	text = "[?severe_starvation_offset]"
+		# 	format = left
+		# 	maxWidth = 80
+		# }
 
-		instantTextBoxType = {
-			name ="debug2"
-			position = { x= 244 y = 175 }
-			font = "hoi_18mbs"
-			text = "[?coal_penalty_multiplier]"
-			format = left
-			maxWidth = 80
-		}
+		# instantTextBoxType = {
+		# 	name ="debug2"
+		# 	position = { x= 244 y = 175 }
+		# 	font = "hoi_18mbs"
+		# 	text = "[?coal_penalty_multiplier]"
+		# 	format = left
+		# 	maxWidth = 80
+		# }
 
-		instantTextBoxType = {
-			name ="debug3"
-			position = { x= 354 y = 175 }
-			font = "hoi_18mbs"
-			text = "[?global.RK_daily_increment]"
-			format = left
-			maxWidth = 80
-		}
+		# instantTextBoxType = {
+		# 	name ="debug3"
+		# 	position = { x= 354 y = 175 }
+		# 	font = "hoi_18mbs"
+		# 	text = "[?global.RK_daily_increment]"
+		# 	format = left
+		# 	maxWidth = 80
+		# }
 
-		instantTextBoxType = {
-			name ="debug4"
-			position = { x= 464 y = 175 }
-			font = "hoi_18mbs"
-			text = "[?core_manpower_multiplier]"
-			format = left
-			maxWidth = 80
+		# instantTextBoxType = {
+		# 	name ="debug4"
+		# 	position = { x= 464 y = 175 }
+		# 	font = "hoi_18mbs"
+		# 	text = "[?core_manpower_multiplier]"
+		# 	format = left
+		# 	maxWidth = 80
+		# }
+	}
+	##################### TOP BAR COAL AND GRAIN DISPLAY #######################################
+	containerWindowType = {
+		name = "topbar_resource_container"
+		position = { x = 0 y = 0 }
+		size = { width=1920 height=1080}
+		Orientation = UPPER_LEFT
+		clipping=yes
+		moveable = no
+		containerWindowType = {
+			name = "topbar_resource_containerin"
+			position = { x = 970 y = 0 }
+			size = { width=750 height=36}
+			Orientation = UPPER_LEFT
+			clipping=yes
+			moveable = no
+
+			# GRAIN
+			iconType ={
+				name ="grain_value_bg"
+				spriteType = "GFX_generic_box_smallest"
+				position = { x=150 y=5 }
+				Orientation = "UPPER_LEFT"
+				alwaystransparent=yes
+		  	}
+
+		   iconType = {
+				name = "grain_icon"
+				position = { x=150 y=4.5 }
+				spriteType = "GFX_resources_strip"
+				frame = 7
+				scale=0.9
+				pdx_tooltip = "PRODUCTION_MATERIALS_GRAIN:0"
+				alwaystransparent=yes
+		    }
+		   instantTextboxType = {
+				name = "grain_value"
+				position = { x = 160 y = 8 }
+				textureFile = ""
+				font = "hoi_18mbs"
+				borderSize = {x = 0 y = 0}
+				text = [?surplus_grain|+0]
+				maxWidth = 57
+				maxHeight = 24
+				fixedsize = yes
+				format = center
+				alwaystransparent=yes
+				pdx_tooltip = "PRODUCTION_MATERIALS_GRAIN:0"
+			}
+
+			# COAL
+			iconType ={
+				name ="coal_value_bg"
+			 	spriteType = "GFX_generic_box_smallest"
+			 	position = { x=222 y=5 }
+			 	Orientation = "UPPER_LEFT"
+			 	alwaystransparent=yes
+			}
+
+			iconType = {
+			 	name = "coal_icon"
+			 	position = { x=222 y=5 }
+			 	spriteType = "GFX_resources_strip"
+			 	frame = 8
+			 	scale=0.9
+			 	alwaystransparent=yes
+			}
+			 instantTextboxType = {
+			 	name = "coal_value"
+			 	position = { x = 232 y = 8 }#x = 995
+			 	textureFile = ""
+			 	font = "hoi_18mbs"
+			 	borderSize = {x = 0 y = 0}
+			 	text = [?surplus_coal|+0]
+			 	maxWidth = 57
+			 	maxHeight = 24
+			 	fixedsize = yes
+			 	format = center
+			 	alwaystransparent=yes
+			}
+		}
+	}
+	# Only Coal
+	containerWindowType = {
+		name = "coal_resource_container"
+		#position = { x = 966 y = 0 }
+		position = { x = 0 y = 0 }
+		size = { width=1920 height=1080}
+		Orientation = UPPER_LEFT
+		clipping=yes
+		moveable = no
+		containerWindowType = {
+			name = "coal_resource_containerin"
+			position = { x = 970 y = 0 }
+			size = { width=750 height=36}
+			Orientation = UPPER_LEFT
+			clipping=yes
+			moveable = no
+
+			# COAL
+			iconType ={
+				name ="coal_value_bg"
+			 	spriteType = "GFX_generic_box_smallest"
+			 	position = { x=150 y=5 }
+			 	Orientation = "UPPER_LEFT"
+			 	alwaystransparent=yes
+			}
+
+			iconType = {
+			 	name = "coal_icon"
+			 	position = { x=150 y=4.5 }
+			 	spriteType = "GFX_resources_strip"
+			 	frame = 8
+			 	scale=0.9
+			 	alwaystransparent=yes
+			}
+			 instantTextboxType = {
+			 	name = "coal_value"
+			 	position = { x = 160 y = 8 }
+			 	textureFile = ""
+			 	font = "hoi_18mbs"
+			 	borderSize = {x = 0 y = 0}
+			 	text = [?surplus_coal|+0]
+			 	maxWidth = 57
+			 	maxHeight = 24
+			 	fixedsize = yes
+			 	format = center
+			 	alwaystransparent=yes
+			}
+		}
+	}
+	# Only Grain
+	containerWindowType = {
+		name = "grain_resource_container"
+		#position = { x = 966 y = 0 }
+		position = { x = 0 y = 0 }
+		size = { width=1920 height=1080}
+		Orientation = UPPER_LEFT
+		clipping=yes
+		moveable = no
+		containerWindowType = {
+			name = "grain_resource_containerin"
+			position = { x = 970 y = 0 }
+			size = { width=750 height=36}
+			Orientation = UPPER_LEFT
+			clipping=yes
+			moveable = no
+
+			# GRAIN
+			iconType ={
+				name ="grain_value_bg"
+				spriteType = "GFX_generic_box_smallest"
+				position = { x=150 y=5 }#abstand jeweils 73
+				Orientation = "UPPER_LEFT"
+				alwaystransparent=yes
+		  	}
+
+		   iconType = {
+				name = "grain_icon"
+				position = { x=150 y=4.5 }
+				spriteType = "GFX_resources_strip"
+				frame = 7
+				scale=0.9
+				pdx_tooltip = "PRODUCTION_MATERIALS_GRAIN:0"
+				alwaystransparent=yes
+		    }
+		   instantTextboxType = {
+				name = "grain_value"
+				position = { x = 160 y = 8 }#x = 995
+				textureFile = ""
+				font = "hoi_18mbs"
+				borderSize = {x = 0 y = 0}
+				text = [?surplus_grain|+0]
+				maxWidth = 57
+				maxHeight = 24
+				fixedsize = yes
+				format = center
+				alwaystransparent=yes
+				pdx_tooltip = "PRODUCTION_MATERIALS_GRAIN:0"
+			}
 		}
 	}
 }

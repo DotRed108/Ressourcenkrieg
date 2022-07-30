@@ -34,7 +34,8 @@ on_actions = {
 					set_variable = {
 						severe_starvation_offset = 0.6
 					}
-				} else = {
+				}
+				else = {
 					set_variable = {
 						severe_starvation_offset = global.default_starvation_offset
 					}
@@ -221,6 +222,26 @@ on_actions = {
 					state = 775
 				}
 				# Hungary 
+				add_resource = {
+					type = grain
+					amount = 31
+					state = 82
+				}
+				add_resource = {
+					type = grain
+					amount = 21
+					state = 154
+				}
+				add_resource = {
+					type = grain
+					amount = 12
+					state = 84
+				}
+				add_resource = {
+					type = grain
+					amount = 15
+					state = 45
+				}
 				add_resource = {
 					type = coal
 					amount = 3
@@ -475,21 +496,15 @@ on_actions = {
 					amount = 12
 					state = 574
 				}
-				# Don Kuban
 				add_resource = {
 					type = grain
-					amount = 16
-					state = 235
+					amount = 7
+					state = 217
 				}
 				add_resource = {
 					type = grain
-					amount = 23
-					state = 218
-				}
-				add_resource = {
-					type = grain
-					amount = 20
-					state = 234
+					amount = 11
+					state = 239
 				}
 				add_resource = {
 					type = grain
@@ -505,6 +520,27 @@ on_actions = {
 					type = grain
 					amount = 4
 					state = 40
+				}
+				# Don Kuban
+				add_resource = {
+					type = grain
+					amount = 16
+					state = 235
+				}
+				add_resource = {
+					type = grain
+					amount = 18
+					state = 237
+				}
+				add_resource = {
+					type = grain
+					amount = 23
+					state = 218
+				}
+				add_resource = {
+					type = grain
+					amount = 20
+					state = 234
 				}
 				# Alash
 				add_resource = {
@@ -568,22 +604,6 @@ on_actions = {
 					type = grain
 					amount = 18
 					state = 79
-				}
-				# hungary
-				add_resource = {
-					type = grain
-					amount = 31
-					state = 82
-				}
-				add_resource = {
-					type = grain
-					amount = 21
-					state = 154
-				}
-				add_resource = {
-					type = grain
-					amount = 15
-					state = 45
 				}
 				# Portugal
 				add_resource = {
@@ -1017,6 +1037,17 @@ on_actions = {
 					amount = 4
 					state = 104
 				}
+				add_resource = {
+					type = grain
+					amount = 16
+					state = 109
+				}
+				# galacia
+				add_resource = {
+					type = grain
+					amount = 24
+					state = 713
+				}
 				#bulgaria
 				add_resource = {
 					type = coal
@@ -1244,14 +1275,16 @@ on_actions = {
 					set_variable = {
 						severe_starvation_offset = global.default_starvation_offset
 					}
-				} else_if = {
+				}
+				else_if = {
 					limit = {
 						num_of_controlled_factories < 25
 					}
 					set_variable = {
 						severe_starvation_offset = 0.3
 					}
-				} else_if = {
+				}
+				else_if = {
 					limit = {
 						check_variable = {
 							severe_starvation_offset < 0.6
@@ -1272,7 +1305,8 @@ on_actions = {
 					add_to_variable = {
 						coal_penalty_multiplier = 0.05
 					}
-				} else_if = {
+				}
+				else_if = {
 					limit = {
 						check_variable = {
 							num_of_controlled_factories > 25
@@ -1284,10 +1318,11 @@ on_actions = {
 					add_to_variable = {
 						coal_penalty_multiplier = 0.05
 					}
-				} else_if = {
+				}
+				else_if = {
 					limit = {
 						check_variable = {
-							coal_penalty_multiplier = 0 
+							coal_penalty_multiplier = 0
 						}
 					}
 					set_variable = {
@@ -1301,20 +1336,22 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
-					global.RK_daily_increment = 0
+					check_variable = {
+						global.RK_daily_increment = 0
+					}
 				}
 				# Fengtian / Japan
 				FNG = {
-					give_resource_rights = { 
+					give_resource_rights = {
 						state = 884
-						receiver = JAP 
+						receiver = JAP
 					}
 				}
 				# Germany / Mittelafrika
 				GER = {
-					give_resource_rights = { 
-						state = 50 
-						receiver = MAF 
+					give_resource_rights = {
+						state = 50
+						receiver = MAF
 					}
 				}
 			}
@@ -1322,7 +1359,9 @@ on_actions = {
 				limit = {
 					FNG_JAP_hostile = yes
 				}
-				JAP = { remove_resource_rights = 884 }
+				JAP = {
+					remove_resource_rights = 884
+				}
 			}
 			add_to_variable = {
 				global.RK_daily_increment = 1

@@ -28,10 +28,6 @@ spriteTypes = {
 		name = "GFX_RK_stockpile_bg"
 		texturefile = "gfx/interface/RK_stockpile_bg.dds"
 	}
-	spriteType = {
-		name = "GFX_map_bg2"
-		textureFile = "gfx/interface/map_bg2.dds"
-	}
 	#########
 	spriteType = {
 		name = "GFX_trade_import_bg"

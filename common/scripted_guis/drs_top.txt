@@ -1,9 +1,9 @@
 scripted_gui = {
 	# Button on logistics window to show or hide resource stockpile window
-	drs_resource_toggle_window = {
+	RK_resource_toggle_window = {
 		context_type = player_context
 
-		window_name = "drs_resource_toggle_window"
+		window_name = "RK_resource_toggle_window"
 		parent_window_token = logistics_tab
 		
 		# visible = { yes } # visible by default
@@ -11,11 +11,11 @@ scripted_gui = {
 		effects = {
 			showStockpileWindow_click={
 				if = {
-					limit={ check_variable={drs_stockpileWindow_isVisible = 0 }}
-					set_variable = { drs_stockpileWindow_isVisible = 1 }
+					limit={ check_variable={RK_stockpileWindow_isVisible = 0 }}
+					set_variable = { RK_stockpileWindow_isVisible = 1 }
 				}
 				else = {
-					clear_variable = drs_stockpileWindow_isVisible
+					clear_variable = RK_stockpileWindow_isVisible
 				}
 			}
 		}
@@ -31,13 +31,90 @@ scripted_gui = {
 		parent_window_token = logistics_tab
 		
 		visible = {
-			check_variable = { drs_stockpileWindow_isVisible = 1 }
+			check_variable = { RK_stockpileWindow_isVisible = 1 }
 		}
 
 		effects = {
 		    drs_close_main_click = {
-		        set_variable = { drs_stockpileWindow_isVisible = 0 }
+		        set_variable = { RK_stockpileWindow_isVisible = 0 }
 		    }
+		}
+	}
+
+
+
+	####################################################
+	grain_resource_toogle_window = {
+		context_type = player_context
+
+		window_name = "grain_resource_toogle_window"
+		parent_window_token = logistics_tab
+		visible = {
+			check_variable = { RK_stockpileWindow_isVisible = 1 }
+		}
+
+		effects = {
+			RK_grain_click={
+				if={limit={check_variable={grain_disabled=0}}
+					set_variable={grain_disabled=1}}
+				else={clear_variable=grain_disabled}
+			}
+		}
+	}
+	coal_resource_toogle_window = {
+		context_type = player_context
+
+		window_name = "coal_resource_toogle_window"
+		parent_window_token = logistics_tab
+		visible = {
+			check_variable = { RK_stockpileWindow_isVisible = 1 }
+		}
+
+		effects = {
+			RK_coal_click={
+				if={limit={check_variable={coal_disabled=0}}
+					set_variable={coal_disabled=1}}
+				else={clear_variable=coal_disabled}
+			}
+		}
+	}
+
+
+	topbar_resources= {
+		context_type = player_context
+		window_name = "topbar_resource_container"
+		visible = {
+			check_variable = {
+				coal_disabled = 1
+			}
+			check_variable = {
+				grain_disabled = 1
+			}
+		}
+	}
+	topbar_resources= {
+		context_type = player_context
+		window_name = "coal_resource_container"
+		visible = {
+			check_variable = {
+				coal_disabled = 1
+			}
+			check_variable = {
+				grain_disabled = 0
+			}
+		}
+	}
+	topbar_resources= {
+		context_type = player_context
+		window_name = "grain_resource_container"
+		visible = {
+			check_variable = {
+				coal_disabled = 0
+			}
+			check_variable = {
+				grain_disabled = 1
+			}
+			
 		}
 	}
 }

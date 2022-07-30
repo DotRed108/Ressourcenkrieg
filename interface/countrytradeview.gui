@@ -177,13 +177,7 @@ guiTypes = {
 			Orientation = "UPPER_LEFT"
 		}
 
-		# RK
-		iconType = {
-			name ="map_bg2"
-			spriteType = "GFX_map_bg2"
-			position = {x=18 y=410}
-			Orientation = "UPPER_LEFT"
-		}
+		# RK good place to put a bg in the future
 
 		buttonType = {
 			name = "sort_country"
