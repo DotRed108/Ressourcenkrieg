@@ -1,0 +1,9 @@
+During the 20th century total war required full investment into the war from not just the military, but the entire nation. This lead to an increased strategic focus on acquiring and managing resources that supplied the home front. To expand upon this side of the war in hoi4, Ressourcenkrieg adds grain and coal as resources along with stockpiling for those resources(and rubber).
+
+FEATURES
+- New Resources
+- Resource Stockpiling
+- 16 new laws for resource management
+- Factories and synthetic refineries now cost coal
+- Populations now require food
+- Depopulation from starvation

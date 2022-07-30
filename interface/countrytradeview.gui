@@ -177,16 +177,24 @@ guiTypes = {
 			Orientation = "UPPER_LEFT"
 		}
 
+		# RK
+		iconType = {
+			name ="map_bg2"
+			spriteType = "GFX_map_bg2"
+			position = {x=18 y=410}
+			Orientation = "UPPER_LEFT"
+		}
+
 		buttonType = {
 			name = "sort_country"
-			position = {x=152 y=410}
+			position = {x=82 y=410} # x was 152
 			quadTextureSprite ="GFX_trade_filter_btn_country"
 			clicksound = click_scroll
 		}
 
 		instantTextboxType = {
 			name = "name"
-			position = { x = 156 y = 417 }
+			position = { x = 85 y = 417 } # x was 156
 			font = "hoi_16mbs"
 			text = "TRADE_SORT_COUNTRY"
 			maxWidth = 160
@@ -197,14 +205,14 @@ guiTypes = {
 
 		buttonType = {
 			name = "sort_export"
-			position = {x=322 y=410}
+			position = {x=252 y=410} # was 322
 			quadTextureSprite ="GFX_trade_filter_btn_export"
 			clicksound = click_scroll
 		}
 
 		instantTextboxType = {
 			name = "export_label"
-			position = { x = 325 y = 417 }
+			position = { x = 255 y = 417 } # was 325
 			font = "hoi_16mbs"
 			text = "TRADE_SORT_EXPORT"
 			maxWidth = 90
@@ -215,14 +223,14 @@ guiTypes = {
 
 		buttonType = {
 			name = "sort_request"
-			position = {x=420 y=410}
+			position = {x=350 y=410} # was 420
 			quadTextureSprite ="GFX_trade_filter_btn_delivered"
 			clicksound = click_scroll
 		}
 
 		instantTextboxType = {
 			name = "request_label"
-			position = { x = 420 y = 417 }
+			position = { x = 350 y = 417 } # was 420
 			font = "hoi_16mbs"
 			text = "TRADE_SORT_REQUEST"
 			maxWidth = 100
@@ -233,14 +241,14 @@ guiTypes = {
 
 		buttonType = {
 			name = "sort_convoys"
-			position = {x=524 y=410}
+			position = {x=454 y=410} # 450
 			quadTextureSprite ="GFX_trade_filter_btn_convoy"
 			clicksound = click_scroll
 		}
 
 		instantTextboxType = {
 			name = "convoys_label"
-			position = { x=538 y=417 }
+			position = { x=468 y=417 } # was 538
 			font = "hoi_16mbs"
 			text = "TRADE_SORT_CONVOYS"
 			maxWidth = 66
@@ -284,8 +292,8 @@ guiTypes = {
 
 		containerWindowType = {
 			name = "trade"
-			position = { x = 150 y = 437 }
-			size = { width = 535 height = 100%% }
+			position = { x = 80 y = 437 } #RK was 150
+			size = { width = 605 height = 100%% } #RK was 535
 			verticalScrollbar = "right_vertical_slider"
 			scroll_wheel_factor = 45
 			smooth_scrolling = yes

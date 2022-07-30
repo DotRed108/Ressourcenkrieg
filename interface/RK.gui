@@ -258,7 +258,7 @@ guiTypes = {
 			name ="debug2"
 			position = { x= 244 y = 175 }
 			font = "hoi_18mbs"
-			text = "[?severe_starvation_offset]"
+			text = "[?coal_penalty_multiplier]"
 			format = left
 			maxWidth = 80
 		}
@@ -267,7 +267,7 @@ guiTypes = {
 			name ="debug3"
 			position = { x= 354 y = 175 }
 			font = "hoi_18mbs"
-			text = "[?num_of_controlled_factories]"
+			text = "[?global.RK_daily_increment]"
 			format = left
 			maxWidth = 80
 		}
