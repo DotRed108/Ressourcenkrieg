@@ -58,7 +58,7 @@ guiTypes = {
 	
 	# Window holding list of all resources, stockpile counts, and last change
 	containerWindowType = {
-		name = "drs_stockpileWindow"
+		name = "RK_stockpileWindow"
 		orientation = UPPER_LEFT
 		position = { x=-550 y=46 }
 		show_position = { x=0 y=46 }
@@ -278,41 +278,41 @@ guiTypes = {
 		}
 
 		# debug row 
-		# instantTextBoxType = {
-		# 	name ="debug1"
-		# 	position = { x= 134 y = 175 }
-		# 	font = "hoi_18mbs"
-		# 	text = "[?severe_starvation_offset]"
-		# 	format = left
-		# 	maxWidth = 80
-		# }
+		instantTextBoxType = {
+			name ="debug1"
+			position = { x= 134 y = 175 }
+			font = "hoi_18mbs"
+			text = "[?rubber_penalty]"
+			format = left
+			maxWidth = 80
+		}
 
-		# instantTextBoxType = {
-		# 	name ="debug2"
-		# 	position = { x= 244 y = 175 }
-		# 	font = "hoi_18mbs"
-		# 	text = "[?coal_penalty_multiplier]"
-		# 	format = left
-		# 	maxWidth = 80
-		# }
+		instantTextBoxType = {
+			name ="debug2"
+			position = { x= 244 y = 175 }
+			font = "hoi_18mbs"
+			text = "[?percentage_of_refineries_filled]"
+			format = left
+			maxWidth = 80
+		}
 
-		# instantTextBoxType = {
-		# 	name ="debug3"
-		# 	position = { x= 354 y = 175 }
-		# 	font = "hoi_18mbs"
-		# 	text = "[?global.RK_daily_increment]"
-		# 	format = left
-		# 	maxWidth = 80
-		# }
+		instantTextBoxType = {
+			name ="debug3"
+			position = { x= 354 y = 175 }
+			font = "hoi_18mbs"
+			text = "[?last_rubber_penaly]"
+			format = left
+			maxWidth = 80
+		}
 
-		# instantTextBoxType = {
-		# 	name ="debug4"
-		# 	position = { x= 464 y = 175 }
-		# 	font = "hoi_18mbs"
-		# 	text = "[?core_manpower_multiplier]"
-		# 	format = left
-		# 	maxWidth = 80
-		# }
+		instantTextBoxType = {
+			name ="debug4"
+			position = { x= 464 y = 175 }
+			font = "hoi_18mbs"
+			text = "[?what_da]"
+			format = left
+			maxWidth = 80
+		}
 	}
 	##################### TOP BAR COAL AND GRAIN DISPLAY #######################################
 	containerWindowType = {

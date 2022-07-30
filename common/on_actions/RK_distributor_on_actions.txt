@@ -94,6 +94,36 @@ on_actions = {
 	on_weekly = {
 		effect = {
 			ROOT = {
+				### This is where rubber penalty is applied
+				add_offsite_building = {
+					type = rubber_sink
+					level = last_rubber_penalty
+				}
+				if = {
+					limit = {
+						has_dynamic_modifier = {
+							modifier = RK_coal_shortage
+						}
+					}
+					add_offsite_building = {
+						type = rubber_sink
+						level = rubber_penalty
+					}
+					set_variable = {
+						last_rubber_penalty = rubber_penalty
+					}
+					# turns negative
+					multiply_variable = {
+						last_rubber_penalty = -1
+					}
+				} else = {
+					set_variable = {
+						rubber_penalty = 0
+					}
+					set_variable = {
+						last_rubber_penalty = 0
+					}
+				}
 				# This is where grain cost is applied
 				set_variable = {
 					grain_needed_by_distribution_facilities = grain_needed_by_people

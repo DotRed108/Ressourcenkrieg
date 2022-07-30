@@ -70,7 +70,7 @@ on_actions = {
 				# Union of Britain
 				add_resource = {
 					type = oil
-					amount = -6
+					amount = -4
 					state = 121
 				}
 				add_resource = {
@@ -90,7 +90,7 @@ on_actions = {
 				}
 				add_resource = {
 					type = oil
-					amount = -13
+					amount = -7
 					state = 129
 				}
 				add_resource = {
@@ -711,13 +711,23 @@ on_actions = {
 				}
 				add_resource = {
 					type = grain
-					amount = 28
+					amount = 22
 					state = 536
 				}
 				add_resource = {
 					type = grain
 					amount = 18
 					state = 533
+				}
+				add_resource = {
+					type = grain
+					amount = 12
+					state = 534
+				}
+				add_resource = {
+					type = grain
+					amount = 2
+					state = 282
 				}
 				# Australasia
 				add_resource = {
@@ -1195,6 +1205,16 @@ on_actions = {
 					state = 1036
 				}
 			}
+			ENG = {
+				capital_scope = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = synthetic_refinery
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
 			# Nationalist France
 			NFA = {
 				add_offsite_building = {
@@ -1227,6 +1247,17 @@ on_actions = {
 			}
 			# Belgium
 			BEL = {
+				capital_scope = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			# Japan
+			JAP = {
 				capital_scope = {
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {

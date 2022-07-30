@@ -477,6 +477,59 @@ on_actions = {
 								max = 0
 							}
 						}
+
+						# Calculate rubber production penalty
+						if = {
+							limit = {
+								check_variable = {
+									percentage_of_refineries_filled < 0
+								}
+							}
+							set_variable = {
+								rubber_penalty = num_of_synths
+							}
+							multiply_variable = {
+								rubber_penalty = percentage_of_refineries_filled
+							}
+							# turns positive
+							multiply_variable = {
+								rubber_penalty = -1
+							}
+							if = {
+								limit = {
+									has_tech = rubber_processing
+								}
+								multiply_variable = {
+									rubber_penalty = 2
+								}
+							} else_if = {
+								limit = {
+									has_tech = improved_rubber_processing
+								}
+								multiply_variable = {
+									rubber_penalty = 3
+								}
+							} else_if = {
+								limit = {
+									has_tech = advanced_rubber_processing
+								}
+								multiply_variable = {
+									rubber_penalty = 4
+								}
+							} else_if = {
+								limit = {
+									has_tech = modern_rubber_processing
+								}
+								multiply_variable = {
+									rubber_penalty = 5
+								}
+							}
+							round_variable = rubber_penalty
+						} else = {
+							set_variable = {
+								rubber_penalty = 0
+							}
+						}
 						
 						# Cap the shortage penalty for players and ai
 						set_variable = {

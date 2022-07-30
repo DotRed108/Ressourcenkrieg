@@ -24,10 +24,10 @@ scripted_gui = {
 	################################################################################################
 
 	# Main window showing resources and stockpile size
-	drs_stockpileWindow = {
+	RK_stockpileWindow = {
 		context_type = player_context
 		
-		window_name = "drs_stockpileWindow"
+		window_name = "RK_stockpileWindow"
 		parent_window_token = logistics_tab
 		
 		visible = {
