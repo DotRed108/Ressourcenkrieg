@@ -1,13 +1,55 @@
-During the 20th century total war required full investment into the war from not just the military, but the entire nation. This lead to an increased strategic focus on acquiring and managing resources that supplied the home front. To expand upon this side of the war, Ressourcenkrieg adds grain and coal as resources along with stockpiling for those resources(and rubber).
+During the 20th century total war required full investment into the war from not just the military, but the entire nation. This lead to an increased strategic focus on acquiring and managing resources that supplied the home front. To expand upon this side of the war in hoi4, Ressourcenkrieg adds grain and coal as resources along with stockpiling for those resources(and rubber).
+
+
 
 FEATURES
+
 - New Resources
+
 - Resource Stockpiling
+
 - 16 new laws for resource management
+
 - Factories and synthetic refineries now cost coal
+
 - Populations now require food
-- Depopulation from starvation
+
+- Depopulation mechanics due to starvation
+
+- Toggle-able top bar resource display
+
+
+
+GUIDE
+
+- Civilian / Military factories and dockyards cost 1 coal.
+
+- Refineries Cost 3 Coal.
+
+- 1 Grain feeds 1 million population
+
+- Food Shortages usually take a month to have significant effects. Depending upon how bad the food shortage is
+
+***IMPORTANT*** - Resource stockpile button can be found at the top of the logistics tab as can be seen in picture #4 (shortcut = Shift + R)
+
+***IMPORTANT*** - Pressing the coal and grain icons in the stockpile window will bring up a resource display on the top bar
+
+
 
 INCOMPATABLE WITH MODS THAT CHANGE... 
+
 - Resources
+
 - Map Layout or any state id's
+
+
+
+FUTURE PLANS
+
+Further Integration with Kaserreich events and focuses that mention food and coal.
+
+
+
+CREDITS
+DotRed108 - Creator / Programmer
+Pyromstr - Sprite Artist

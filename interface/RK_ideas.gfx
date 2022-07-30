@@ -63,4 +63,12 @@ spriteTypes = {
 		name = "GFX_idea_rubber_stockpile_focus"
 		texturefile = "gfx/interface/ideas/s_rubber.png"
 	}
+	spriteType = {
+		name = "GFX_idea_coal_shortage"
+		texturefile = "gfx/interface/ideas/no_coal.png"
+	}
+	spriteType = {
+		name = "GFX_idea_food_shortage"
+		texturefile = "gfx/interface/ideas/no_food.png"
+	}
 }
