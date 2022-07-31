@@ -9,6 +9,16 @@ on_actions = {
 					population_per_civilian_factory = num_of_civilian_factories
 				}
 			}
+			random_country = {
+				if = {
+					limit = {
+						is_playing_kaiserreich = yes
+					}
+					set_variable = {
+						global.is_playing_kaiserreich = 1
+					}
+				}
+			}
 		}
 	}
 	on_weekly = {

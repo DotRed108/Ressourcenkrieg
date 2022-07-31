@@ -2,6 +2,7 @@ ideas = {
 	rationing_slot = {
 		law = yes
 		use_list_view = yes
+
 		no_rationing = {
 			allowed = {
 				always = yes
@@ -33,15 +34,15 @@ ideas = {
 			default = yes
 			cancel_if_invalid = no
 		}
+		
 		war_rationing = {
 			available = {
 				AND = {
-					NOT = {
-						has_government = market_liberal
-					}
+					RK_has_market_liberal_ideology = no
 					OR = {
-						NOT = {
-							has_democratic_government = yes
+						OR = {
+							RK_has_reactionary_ideology = yes
+							RK_has_revolutionary_ideology = yes
 						}
 						threat > 0.5
 						has_war = yes
@@ -86,17 +87,16 @@ ideas = {
 					}
 				}
 			}
-
 			cancel_if_invalid = no
 		}
 		subsistence_rationing = {
 			available = {
 				OR = {
-					has_government = totalist
+					RK_has_tankie_ideology = yes
 					AND = {
 						OR = {
-							has_government = syndicalist
-							has_dictatorship_government = yes
+							RK_has_reactionary_ideology = yes
+							RK_has_revolutionary_ideology = yes
 						}
 						surrender_progress > 0.1
 						has_war = yes
@@ -144,8 +144,7 @@ ideas = {
 					}
 				}
 			}
-
-			cancel_if_invalid = yes
+			cancel_if_invalid = no
 		}
 	}
 	grain_prioritization_slot = {
@@ -154,63 +153,42 @@ ideas = {
 		feed_your_people_first = {
 			available = {
 				AND = {
-					NOT = {
-						has_socialist_government = yes
-					}
-					NOT = {
-						has_government = market_liberal
-					}
+					RK_has_left_wing_ideology = no
+					RK_has_market_liberal_ideology = no
 				}
 			}
 			cost = 50
 			removal_cost = -1
-
-			cancel_if_invalid = yes
 		}
 		prioritize_your_people = {
 			available = {
-				NOT = {
-					has_government = market_liberal
-				}
+				RK_has_market_liberal_ideology = no
 			}
 			cost = 50
 			removal_cost = -1
 			default = yes
 
-			cancel_if_invalid = yes
 		}
 		no_grain_priority = {
 			available = {
-				NOT = {
-					has_government = national_populist
-				}
+				RK_has_fascist_ideology = no
 			}
 			cost = 75
 			removal_cost = -1
-
-			cancel_if_invalid = yes
 		}
 		prioritize_occupied_people = {
 			available = {
-				OR = {
-					has_socialist_government = yes
-					has_government = social_democrat
-					has_government = social_liberal
-				}
+				RK_has_left_wing_ideology = yes
 			}
 			cost = 100
 			removal_cost = -1
-
-			cancel_if_invalid = yes
 		}
 		feed_occupied_people_first = {
 			available = {
-				has_socialist_government = yes
+				RK_has_revolutionary_ideology = yes
 			}
 			cost = 200
 			removal_cost = -1
-
-			cancel_if_invalid = yes
 		}
 	}
 	coal_prioritization_slot = {
@@ -220,17 +198,14 @@ ideas = {
 			allowed = {
 				always = yes
 			}
-			cost = 10
+			cost = 5
 			removal_cost = -1
-
-
-			cancel_if_invalid = yes
 		}
 		prioritize_factories = {
 			allowed = {
 				always = yes
 			}
-			cost = 10
+			cost = 5
 			removal_cost = -1
 
 			ai_will_do = {
@@ -249,14 +224,12 @@ ideas = {
 					}
 				}
 			}
-
-			cancel_if_invalid = yes
 		}
 		no_coal_priority = {
 			allowed = {
 				always = yes
 			}
-			cost = 10
+			cost = 5
 			removal_cost = -1
 			default = yes
 			ai_will_do = {
@@ -287,13 +260,12 @@ ideas = {
 					}
 				}
 			}
-			cancel_if_invalid = yes
 		}
 		prioritize_refineries = {
 			allowed = {
 				always = yes
 			}
-			cost = 10
+			cost = 5
 			removal_cost = -1
 
 			ai_will_do = {
@@ -313,18 +285,13 @@ ideas = {
 					}
 				}
 			}
-
-			cancel_if_invalid = yes
 		}
 		fuel_refineries_first = {
 			allowed = {
 				always = yes
 			}
-			cost = 10
+			cost = 5
 			removal_cost = -1
-
-
-			cancel_if_invalid = yes
 		}
 	}
 	stockpile_focus_slot = {
@@ -334,7 +301,7 @@ ideas = {
 			allowed = {
 				always = yes
 			}
-			cost = 30
+			cost = 10
 			removal_cost = -1
 			level = 1
 			default = yes
@@ -345,7 +312,7 @@ ideas = {
 			allowed = {
 				always = yes
 			}
-			cost = 30
+			cost = 1
 			removal_cost = -1
 			level = 1
 
@@ -355,7 +322,7 @@ ideas = {
 			allowed = {
 				always = yes
 			}
-			cost = 30
+			cost = 10
 			removal_cost = -1
 			level = 1
 

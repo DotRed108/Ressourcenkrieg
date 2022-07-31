@@ -21,15 +21,6 @@ on_actions = {
 			}
 		}
 	}
-	on_startup = {
-		effect = {
-			every_country = {
-				set_variable = {
-					export_ratio = 1
-				}
-			}
-		}
-	}
 	on_daily = {
 		effect = {
 			ROOT = {

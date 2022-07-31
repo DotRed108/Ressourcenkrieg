@@ -1,0 +1,171 @@
+################# DETERMINES WHAT MOD IS BEING PLAYED ##################
+is_playing_kaiserreich = {
+	OR = {
+		AND = {
+			country_exists = MAF
+			country_exists = LEP
+			country_exists = TRM
+			country_exists = UKR
+		}
+		check_variable = {
+			global.is_playing_kaiserreich = 1
+		}
+	}
+}
+###########################################################################
+
+################### IDEOLOGY TRIGGERS ###########################
+RK_has_reactionary_ideology = {
+	if = {
+		limit = {
+			is_playing_kaiserreich = yes
+		}
+		OR = {
+			has_government = authoritarian_democrat
+			has_government = paternal_autocrat
+			has_government = national_populist
+		}
+	}
+	else = {
+		has_government = fascism
+		has_government = neutrality
+	}
+}
+
+RK_has_tankie_ideology = {
+	if = {
+		limit = {
+			is_playing_kaiserreich = yes
+		}
+		has_government = totalist
+	}
+	else = {
+		has_government = communism
+	}
+}
+RK_has_revolutionary_ideology = {
+	if = {
+		limit = {
+			is_playing_kaiserreich = yes
+		}
+		OR = {
+			has_government = radical_socialist
+			has_government = syndicalist
+			has_government = totalist
+		}
+	}
+	else = {
+		has_government = communism
+	}
+}
+
+RK_has_market_liberal_ideology = {
+	if = {
+		limit = {
+			is_playing_kaiserreich = yes
+		}
+		has_government = market_liberal
+	}
+	else = {
+		always = no
+	}
+}
+
+RK_has_democratic_ideology = {
+	if = {
+		limit = {
+			is_playing_kaiserreich = yes
+		}
+		OR = {
+			has_government = radical_socialist
+			has_government = syndicalist
+			has_government = social_democrat
+			has_government = social_liberal
+			has_government = market_liberal
+			has_government = social_conservative
+			has_government = authoritarian_democrat
+		}
+	}
+	else = {
+		has_government = democratic
+	}
+}
+
+RK_has_anti_democratic_ideology = {
+	if = {
+		limit = {
+			is_playing_kaiserreich = yes
+		}
+		has_government = paternal_autocrat
+		has_government = national_populist
+	}
+	else = {
+		has_government = fascism
+		has_government = neutrality
+	}
+}
+
+RK_has_fascist_ideology = {
+	if = {
+		limit = {
+			is_playing_kaiserreich = yes
+		}
+		has_government = national_populist
+	}
+	else = {
+		has_government = fascism
+	}
+}
+
+RK_has_left_wing_ideology = {
+	if = {
+		limit = {
+			is_playing_kaiserreich = yes
+		}
+		OR = {
+			has_government = totalist
+			has_government = syndicalist
+			has_government = radical_socialist
+			has_government = social_democrat
+			has_government = social_liberal
+		}
+	}
+	else = {
+		has_government = communism
+	}
+}
+
+RK_has_right_wing_ideology = {
+	if = {
+		limit = {
+			is_playing_kaiserreich = yes
+		}
+		OR = {
+			has_government = paternal_autocrat
+			has_government = national_populist
+			has_government = market_liberal
+			has_government = social_conservative
+			has_government = authoritarian_democrat
+		}
+	}
+	else = {
+		has_government = fascism
+		has_government = neutrality
+	}
+}
+
+RK_has_centrist_ideology = {
+	if = {
+		limit = {
+			is_playing_kaiserreich = yes
+		}
+		OR = {
+			has_government = social_liberal
+			has_government = social_conservative
+		}
+	}
+	else = {
+		has_government = democrat
+	}
+}
+#######################################################

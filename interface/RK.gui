@@ -309,7 +309,7 @@ guiTypes = {
 			name ="debug4"
 			position = { x= 464 y = 175 }
 			font = "hoi_18mbs"
-			text = "[?what_da]"
+			text = "[?global.is_playing_kaiserreich]"
 			format = left
 			maxWidth = 80
 		}
