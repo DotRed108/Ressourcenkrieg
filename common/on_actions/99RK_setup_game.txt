@@ -1787,16 +1787,6 @@ on_actions = {
 					# South Africa
 					add_resource = {
 						type = coal
-						amount = 2
-						state = 945
-					}
-					add_resource = {
-						type = coal
-						amount = 1
-						state = 947
-					}
-					add_resource = {
-						type = coal
 						amount = 10
 						state = 275
 					}

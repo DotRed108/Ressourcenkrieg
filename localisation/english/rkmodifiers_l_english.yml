@@ -3,5 +3,6 @@
   country_resource_cost_coal:0 ""
   RK_coal_shortage:0 "Coal Shortage"
   RK_grain_shortage:0 "Grain Shortage"
-  RK_grain_shortage_desc: "You are losing population in your core and occupied states."
-  RK_grain_shortage_delayed: "You lose population in core and occupied states in proportion to your stability and compliance penalties."
+  core_population_death_count: "Core Population Dying"
+  occupied_population_death_count: "Occupied Population Dying"
+  rubber_production_disrupted: "Rubber Production Disrupted"

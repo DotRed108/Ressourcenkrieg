@@ -36,3 +36,4 @@
   no_grain_priority_desc:0 "Grain is equally distributed between core and occupied populations."
   prioritize_your_people_desc:0 "Increase the ratio at which core populations recieve grain by §Y50%§!"
   feed_your_people_first_desc:0 "All core populations are fed first before any grain goes to occupied population."
+  second_in_command:0 "Second In Command"

@@ -13,6 +13,8 @@ RK_grain_shortage = {
 	resistance_growth = resistance_penalty
 	national_populist_drift = ideology_penalty
 	fascism_drift = ideology_penalty
+	core_population_death_count = daily_core_death_count
+	occupied_population_death_count = daily_occ_death_count
 }
 
 RK_coal_shortage = {
@@ -28,4 +30,5 @@ RK_coal_shortage = {
 	industrial_capacity_factory = factory_output_penalty
 	industrial_capacity_dockyard = factory_output_penalty
 	fuel_gain_factor_from_states = refinery_output_penalty
+	rubber_production_disrupted = rubber_penalty
 }

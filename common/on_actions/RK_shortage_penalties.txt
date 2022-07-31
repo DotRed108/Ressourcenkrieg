@@ -734,10 +734,37 @@ on_actions = {
 						add_manpower = state_manpower_reduction
 					}
 					set_variable = {
+						daily_core_death_count = weekly_core_death_count
+					}
+					divide_variable = {
+						daily_core_death_count = 7
+					}
+					set_variable = {
+						daily_occ_death_count = weekly_occ_death_count
+					}
+					divide_variable = {
+						daily_occ_death_count = 7
+					}
+					set_variable = {
 						stability_penalty = core_manpower_multiplier
 					}
 					multiply_variable = {
 						stability_penalty = 0.025
+					}
+					if = {
+						limit = {
+							is_major = yes
+						}
+						set_variable = {
+							base_stability_penalty = -0.001
+						}
+					} else = {
+						set_variable = {
+							base_stability_penalty = 0
+						}
+					}
+					add_to_variable = {
+						stability_penalty = base_stability_penalty
 					}
 					set_variable = {
 						compliance_penalty = occupied_manpower_multiplier

@@ -14,3 +14,4 @@
   synthetic_refinery_desc: "This building §Y(CONSUMES §!§R3 COAL§!§Y)§! and provides the state with"
   synthetic_refinery_amount: "$VALUE|Y0=$"
   synthetic_refinery_resource: "£resources_strip|$FRAME$"
+  government:1 "Government"
