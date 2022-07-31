@@ -12,6 +12,11 @@ is_playing_kaiserreich = {
 		}
 	}
 }
+is_playing_vanilla = {
+	check_variable = {
+		global.is_playing_vanilla = 1
+	}
+}
 ###########################################################################
 
 ################### IDEOLOGY TRIGGERS ###########################

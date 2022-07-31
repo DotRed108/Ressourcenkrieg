@@ -36,10 +36,10 @@ on_actions = {
 			}
 		}
 	}
+	######################## CALCULATE RESOURCE COAL AND GRAIN COSTS ##################################
 	on_weekly = {
 		effect = {
 			ROOT = {
-				############################ COSTS #################################
 				set_variable = {
 					total_infrastructure_level = 0
 				}
@@ -119,9 +119,14 @@ on_actions = {
 				add_to_variable = {
 					grain_needed_by_people = total_core_cost
 				}
+			}
+		}
+	}
 
-
-				###################################### LIMITS ############################################
+	############################### CALCULATE STOCKPILE LIMITS ############################################
+	on_weekly = {
+		effect = {
+			ROOT = {
 				# Values were chosen using britain as baseline
 				# With these values Britain would be able to run off stockpiles for 1 full year assuming no extra infrastructure and WT is at 100%
 				# grain

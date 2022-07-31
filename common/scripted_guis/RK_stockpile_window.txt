@@ -90,6 +90,7 @@ scripted_gui = {
 			check_variable = {
 				grain_disabled = 1
 			}
+			is_playing_kaiserreich = no
 		}
 	}
 	topbar_resources= {
@@ -102,6 +103,7 @@ scripted_gui = {
 			check_variable = {
 				grain_disabled = 0
 			}
+			is_playing_kaiserreich = no
 		}
 	}
 	topbar_resources= {
@@ -114,7 +116,57 @@ scripted_gui = {
 			check_variable = {
 				grain_disabled = 1
 			}
-			
+			is_playing_kaiserreich = no
+		}
+	}
+	topbar_resources= {
+		context_type = player_context
+		window_name = "KR_topbar_resource_container"
+		visible = {
+			check_variable = {
+				coal_disabled = 1
+			}
+			check_variable = {
+				grain_disabled = 1
+			}
+			is_playing_kaiserreich = yes
+		}
+	}
+	topbar_resources= {
+		context_type = player_context
+		window_name = "KR_coal_resource_container"
+		visible = {
+			check_variable = {
+				coal_disabled = 1
+			}
+			check_variable = {
+				grain_disabled = 0
+			}
+			is_playing_kaiserreich = yes
+		}
+	}
+	topbar_resources= {
+		context_type = player_context
+		window_name = "KR_grain_resource_container"
+		visible = {
+			check_variable = {
+				coal_disabled = 0
+			}
+			check_variable = {
+				grain_disabled = 1
+			}
+			is_playing_kaiserreich = yes
+		}
+	}
+
+	chart_explanation = {
+		window_name = "chart_explanation"
+		context_type = player_context
+		parent_window_token = poltics_tab
+		visible = {
+			check_variable = {
+				chart_explanation_visible = 1
+			}
 		}
 	}
 }
