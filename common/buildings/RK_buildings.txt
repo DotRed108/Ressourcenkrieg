@@ -68,4 +68,29 @@ buildings = {
 		max_level = 999
 		shares_slots = yes
 	}
+	decommissioned_arms_factory = {
+		show_on_map = 6
+		base_cost = 99999999
+		military_production = 0
+		icon_frame = 2
+		max_level = 999
+		shares_slots = yes
+	}
+	decommissioned_industrial_complex = {
+		show_on_map = 6
+		base_cost = 99999999
+		general_production = 0
+		icon_frame = 1
+		max_level = 999
+		shares_slots = yes
+	}
+	decommissioned_dockyard = {
+		show_on_map = 1
+		base_cost = 99999999
+		only_costal = no
+		naval_production = 0
+		icon_frame = 4
+		max_level = 999
+		shares_slots = yes
+	}
 }

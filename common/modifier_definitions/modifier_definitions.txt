@@ -118,7 +118,7 @@ occupied_population_death_count = {
 }
 
 rubber_production_disrupted = {
-	color_type = bade
+	color_type = bad
 	value_type = number
 	precision = 0
 	category = country

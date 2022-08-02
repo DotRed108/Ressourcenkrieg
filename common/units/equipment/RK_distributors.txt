@@ -7,6 +7,7 @@ equipments = {
 				can_produce_distributors = 1
 			}
 		}
+		sprite = convoy
 		type = { 
 			convoy
 		}
@@ -23,6 +24,7 @@ equipments = {
 				can_produce_distributors = 1
 			}
 		}
+		sprite = convoy
 		type = { 
 			convoy
 		}

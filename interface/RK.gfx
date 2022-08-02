@@ -72,6 +72,26 @@ spriteTypes = {
 		texturefile = "gfx/interface/ideas/fuel1.png"
 	}
 	SpriteType = {
+		name = "GFX_idea_shut_down_all_non_compliant_factories"
+		texturefile = "gfx/interface/ideas/decommission1.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_shut_down_mildly_non_compliant_factories"
+		texturefile = "gfx/interface/ideas/decommission2.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_shut_down_moderately_non_compliant_factories"
+		texturefile = "gfx/interface/ideas/decommission3.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_only_shut_down_highly_non_compliant_factories"
+		texturefile = "gfx/interface/ideas/decommission4.png"
+	}
+	SpriteType = {
+		name = "GFX_idea_never_shut_down_non_compliant_factories"
+		texturefile = "gfx/interface/ideas/decommission5.png"
+	}
+	SpriteType = {
 		name = "GFX_idea_grain_stockpile_focus"
 		texturefile = "gfx/interface/ideas/s_grain.png"
 	}

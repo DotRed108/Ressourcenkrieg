@@ -24,7 +24,7 @@ on_actions = {
 					}
 					round_variable = grain_needed_by_people
 					set_variable = {
-						last_grain_needed_by_people = grain_needed_by_people
+						last_grain_needed_distribution_facilities = grain_needed_by_people
 					}
 					add_offsite_building = {
 						type = grain_distribution_facility
@@ -102,36 +102,23 @@ on_actions = {
 					grain_needed_by_distribution_facilities = grain_needed_by_people
 				}
 				# Rationing has to be done here before rounding
-				if = {
-					limit = {
-						has_idea = war_rationing
-					}
-					multiply_variable = {
-						grain_needed_by_distribution_facilities = 0.75
-					}
-				}
-				else_if = {
-					limit = {
-						has_idea = subsistence_rationing
-					}
-					multiply_variable = {
-						grain_needed_by_distribution_facilities = 0.50
-					}
+				multiply_variable = {
+					grain_needed_by_distribution_facilities = rations
 				}
 				round_variable = grain_needed_by_distribution_facilities
 				add_offsite_building = {
 					type = grain_distribution_facility
-					level = grain_needed_by_people
+					level = grain_needed_by_distribution_facilities
 				}
 				multiply_variable = {
-					last_grain_needed_by_people = -1
+					last_grain_needed_distribution_facilities = -1
 				}
 				add_offsite_building = {
 					type = grain_distribution_facility
-					level = last_grain_needed_by_people
+					level = last_grain_needed_distribution_facilities
 				}
 				set_variable = {
-					last_grain_needed_by_people = grain_needed_by_people
+					last_grain_needed_distribution_facilities = grain_needed_by_distribution_facilities
 				}
 			}
 		}

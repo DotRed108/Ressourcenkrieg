@@ -10,7 +10,7 @@ RK_grain_shortage = {
 	}
 	stability_weekly = stability_penalty
 	compliance_growth = compliance_penalty
-	resistance_growth = resistance_penalty
+	resistance_target = resistance_penalty
 	national_populist_drift = ideology_penalty
 	fascism_drift = ideology_penalty
 	core_population_death_count = daily_core_death_count

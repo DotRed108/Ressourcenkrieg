@@ -1,13 +1,13 @@
 resources = {	
 	grain = {
 		icon_frame = 7
-		cic = 0.1
+		cic = 0.0625
 		convoys = 0.1
 	}
 
 	coal = {
 		icon_frame = 8
-		cic = 0.125
+		cic = 0.0625
 		convoys = 0.1
 	}
 }

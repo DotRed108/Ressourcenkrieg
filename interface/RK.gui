@@ -282,7 +282,7 @@ guiTypes = {
 			name ="debug1"
 			position = { x= 134 y = 175 }
 			font = "hoi_18mbs"
-			text = "[?base_stability_penalty]"
+			text = "[?num_of_controlled_factories]"
 			format = left
 			maxWidth = 80
 		}
@@ -291,7 +291,7 @@ guiTypes = {
 			name ="debug2"
 			position = { x= 244 y = 175 }
 			font = "hoi_18mbs"
-			text = "[?severe_starvation_offset]"
+			text = "[?num_of_owned_factories]"
 			format = left
 			maxWidth = 80
 		}
@@ -309,7 +309,7 @@ guiTypes = {
 			name ="debug4"
 			position = { x= 464 y = 175 }
 			font = "hoi_18mbs"
-			text = "[?global.is_playing_kaiserreich]"
+			text = "[?decomission_threshold]"
 			format = left
 			maxWidth = 80
 		}

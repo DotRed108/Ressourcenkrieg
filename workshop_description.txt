@@ -8,15 +8,13 @@ FEATURES
 
 - Resource Stockpiling
 
-- 16 new laws for resource management
+- 21 new laws for resource management
 
 - Factories and synthetic refineries now cost coal
 
 - Populations now require food
 
 - De-population mechanics due to starvation
-
-- Toggle-able top bar resource display
 
 
 

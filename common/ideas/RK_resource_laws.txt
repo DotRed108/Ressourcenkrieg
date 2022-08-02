@@ -7,6 +7,11 @@ ideas = {
 			allowed = {
 				always = yes
 			}
+			on_add = {
+				set_variable = {
+					rations = 1
+				}
+			}
 			cost = 10
 			removal_cost = -1
 			level = 1
@@ -47,6 +52,11 @@ ideas = {
 						threat > 0.5
 						has_war = yes
 					}
+				}
+			}
+			on_add = {
+				set_variable = {
+					rations = 0.75
 				}
 			}
 			cost = 100
@@ -101,6 +111,11 @@ ideas = {
 						surrender_progress > 0.1
 						has_war = yes
 					}
+				}
+			}
+			on_add = {
+				set_variable = {
+					rations = 0.5
 				}
 			}
 			cost = 200
@@ -294,6 +309,71 @@ ideas = {
 			removal_cost = -1
 		}
 	}
+	factory_shutdown_slot = {
+		law = yes
+		use_list_view = yes
+		never_shut_down_non_compliant_factories = {
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			cost = 10
+			on_add = {
+				set_variable = {
+					decomission_threshold = -100
+				}
+			}
+		}
+		only_shut_down_highly_non_compliant_factories = {
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			cost = 10
+			on_add = {
+				set_variable = {
+					decomission_threshold = 20
+				}
+			}
+		}
+		shut_down_moderately_non_compliant_factories = {
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			cost = 10
+			default = yes
+			on_add = {
+				set_variable = {
+					decomission_threshold = 40
+				}
+			}
+		}
+		shut_down_mildly_non_compliant_factories = {
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			cost = 10
+			on_add = {
+				set_variable = {
+					decomission_threshold = 70
+				}
+			}
+		}
+		shut_down_all_non_compliant_factories = {
+			allowed = {
+				always = yes
+			}
+			cost = 10
+			removal_cost = -1
+			on_add = {
+				set_variable = {
+					decomission_threshold = 100
+				}
+			}
+		}
+	}
 	stockpile_focus_slot = {
 		law = yes
 		use_list_view = yes
@@ -303,7 +383,6 @@ ideas = {
 			}
 			cost = 10
 			removal_cost = -1
-			level = 1
 			default = yes
 
 			cancel_if_invalid = no
@@ -314,7 +393,6 @@ ideas = {
 			}
 			cost = 10
 			removal_cost = -1
-			level = 1
 
 			cancel_if_invalid = no
 		}
@@ -324,7 +402,6 @@ ideas = {
 			}
 			cost = 10
 			removal_cost = -1
-			level = 1
 
 			cancel_if_invalid = no
 		}

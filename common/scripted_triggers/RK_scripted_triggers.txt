@@ -32,8 +32,10 @@ RK_has_reactionary_ideology = {
 		}
 	}
 	else = {
-		has_government = fascism
-		has_government = neutrality
+		OR = {
+			has_government = fascism
+			has_government = neutrality
+		}
 	}
 }
 
@@ -105,8 +107,10 @@ RK_has_anti_democratic_ideology = {
 		has_government = national_populist
 	}
 	else = {
-		has_government = fascism
-		has_government = neutrality
+		OR = {
+			has_government = fascism
+			has_government = neutrality
+		}
 	}
 }
 
@@ -154,8 +158,10 @@ RK_has_right_wing_ideology = {
 		}
 	}
 	else = {
-		has_government = fascism
-		has_government = neutrality
+		OR = {
+			has_government = fascism
+			has_government = neutrality
+		}
 	}
 }
 
@@ -170,7 +176,7 @@ RK_has_centrist_ideology = {
 		}
 	}
 	else = {
-		has_government = democrat
+		has_government = democratic
 	}
 }
 #######################################################

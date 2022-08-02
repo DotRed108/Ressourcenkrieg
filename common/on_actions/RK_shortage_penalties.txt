@@ -751,21 +751,6 @@ on_actions = {
 					multiply_variable = {
 						stability_penalty = 0.025
 					}
-					if = {
-						limit = {
-							is_major = yes
-						}
-						set_variable = {
-							base_stability_penalty = -0.001
-						}
-					} else = {
-						set_variable = {
-							base_stability_penalty = 0
-						}
-					}
-					add_to_variable = {
-						stability_penalty = base_stability_penalty
-					}
 					set_variable = {
 						compliance_penalty = occupied_manpower_multiplier
 					}
@@ -773,7 +758,7 @@ on_actions = {
 						resistance_penalty = compliance_penalty
 					}
 					multiply_variable = {
-						resistance_penalty = -0.1
+						resistance_penalty = -0.2
 					}
 					if = {
 						limit = {
@@ -792,6 +777,9 @@ on_actions = {
 						subtract_from_variable = {
 							ideology_penalty = occupied_manpower_multiplier
 						}
+						multiply_variable = {
+							ideology_penalty = -0.3
+						}
 					} else = {
 						set_variable = {
 							ideology_penalty = 0
@@ -801,6 +789,101 @@ on_actions = {
 				else = {
 					subtract_from_variable = {
 						food_shortage_depth = 2
+					}
+				}
+			}
+		}
+	}
+
+	################## DECOMISSIONS AND RECOMISSIONS FACTORIES IN OCCUPIED STATES ###################
+	on_weekly = {
+		effect = {
+			ROOT = {
+				every_controlled_state = {
+					limit = {
+						NOT = {
+							is_core_of = ROOT
+						}
+					}
+					set_variable = {
+						AIC = building_level@industrial_complex
+					}
+					set_variable = {
+						AAF = building_level@arms_factory
+					}
+					set_variable = {
+						AD = building_level@dockyard
+					}
+					set_variable = {
+						DIC = building_level@decommissioned_industrial_complex
+					}
+					set_variable = {
+						DAF = building_level@decommissioned_arms_factory
+					}
+					set_variable = {
+						DD = building_level@decommissioned_dockyard
+					}
+					if = {
+						limit = {
+							check_variable = {
+								THIS.compliance < ROOT.decomission_threshold
+							}
+						}
+						remove_building = {
+							type = industrial_complex
+							level = AIC
+						}
+						remove_building = {
+							type = arms_factory
+							level = AAF
+						}
+						remove_building = {
+							type = dockyard
+							level = AD
+						}
+						add_building_construction = {
+							type = decommissioned_industrial_complex
+							level = AIC
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = decommissioned_arms_factory
+							level = AAF
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = decommissioned_dockyard
+							level = AD
+							instant_build = yes
+						}
+					} else = {
+						remove_building = {
+							type = decommissioned_industrial_complex
+							level = DIC
+						}
+						remove_building = {
+							type = decommissioned_arms_factory
+							level = DAF
+						}
+						remove_building = {
+							type = decommissioned_dockyard
+							level = DD
+						}
+						add_building_construction = {
+							type = industrial_complex
+							level = DIC
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = arms_factory
+							level = DAF
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = dockyard
+							level = DD
+							instant_build = yes
+						}
 					}
 				}
 			}
