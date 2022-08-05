@@ -111,4 +111,12 @@ spriteTypes = {
 		name = "GFX_idea_food_shortage"
 		texturefile = "gfx/interface/ideas/no_food.png"
 	}
+	spriteType = {
+		name = "GFX_decision_single_grain"
+		texturefile = "gfx/interface/single_grain.png"
+	}
+	spriteType = {
+		name = "GFX_decision_single_coal"
+		texturefile = "gfx/interface/single_coal.png"
+	}
 }

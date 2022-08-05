@@ -12,9 +12,6 @@ on_actions = {
 							check_variable = {
 								total_grain_surplus < 0
 							}
-							check_variable = {
-								grain_needed_by_people > 0
-							}
 						}
 						set_variable = {
 							percentage_of_occupied_fed = 0
@@ -254,9 +251,6 @@ on_actions = {
 						limit = {
 							check_variable = {
 								total_coal_surplus < 0
-							}
-							check_variable = {
-								coal_needed_by_factories_et_synths > 0
 							}
 						}
 						set_variable = {

@@ -2,7 +2,6 @@ ideas = {
 	rationing_slot = {
 		law = yes
 		use_list_view = yes
-
 		no_rationing = {
 			allowed = {
 				always = yes
@@ -323,6 +322,13 @@ ideas = {
 					decomission_threshold = -100
 				}
 			}
+			ai_will_do = {
+				base = 1
+				modifier = {
+					factor = 80
+					original_tag = GER
+				}
+			}
 		}
 		only_shut_down_highly_non_compliant_factories = {
 			allowed = {
@@ -333,6 +339,13 @@ ideas = {
 			on_add = {
 				set_variable = {
 					decomission_threshold = 20
+				}
+			}
+			ai_will_do = {
+				base = 1
+				modifier = {
+					factor = 10
+					original_tag = GER
 				}
 			}
 		}
@@ -347,6 +360,9 @@ ideas = {
 				set_variable = {
 					decomission_threshold = 40
 				}
+			}
+			ai_will_do = {
+				base = 10
 			}
 		}
 		shut_down_mildly_non_compliant_factories = {

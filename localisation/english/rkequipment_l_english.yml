@@ -1,0 +1,13 @@
+﻿l_english:
+  player_infantry_equipment_0:0 "Basic Infantry Equipment"
+  player_infantry_equipment_0_short:0 "Basic Eq."
+  player_infantry_equipment_0_desc:0 "Basic infantryman equipment developed before and during the Great War."
+  player_infantry_equipment_1:0 "Infantry Equipment I"
+  player_infantry_equipment_1_short:0 "Weapons I"
+  player_infantry_equipment_1_desc:0 "Personal and crew served weapons for infantry as well as the various other bits of kit a soldier needs."
+  player_infantry_equipment_2:0 "Infantry Equipment II"
+  player_infantry_equipment_2_short:0 "Weapons II"
+  player_infantry_equipment_2_desc:0 "Personal and crew served weapons for infantry as well as the various other bits of kit a soldier needs. Modernized to include a great number of sub-machineguns and anti-tank rifles."
+  player_infantry_equipment_3:0 "Infantry Equipment III"
+  player_infantry_equipment_3_short:0 "Weapons III"
+  player_infantry_equipment_3_desc:0 "Personal and crew served weapons for infantry as well as the various other bits of kit a soldier needs. Further modernized to include personal Assault Rifles and anti-tank rockets."

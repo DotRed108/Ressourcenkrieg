@@ -1,0 +1,60 @@
+default_unit_production = { #If adding country-unique ones, bear in mind that they STACK
+	enable = {
+		always = yes
+	}
+	allowed = {
+		always = yes
+	}
+
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = convoy
+		value = 1
+	}
+
+	ai_strategy = {
+		type = building_target
+		id = rubber_stockpile_facility
+		value = 0
+	}
+	ai_strategy = {
+		type = building_target
+		id = grain_stockpile_facility
+		value = 0
+	}
+	ai_strategy = {
+		type = building_target
+		id = coal_stockpile_facility
+		value = 0
+	}
+	ai_strategy = {
+		type = building_target
+		id = grain_distribution_facility
+		value = 0
+	}
+	ai_strategy = {
+		type = building_target
+		id = rubber_sink
+		value = 0
+	}
+	ai_strategy = {
+		type = building_target
+		id = civilian_dockyard
+		value = 0
+	}
+	ai_strategy = {
+		type = building_target
+		id = decommissioned_arms_factory
+		value = 0
+	}
+	ai_strategy = {
+		type = building_target
+		id = decommissioned_industrial_complex
+		value = 0
+	}
+	ai_strategy = {
+		type = building_target
+		id = decommissioned_dockyard
+		value = 0
+	}
+}

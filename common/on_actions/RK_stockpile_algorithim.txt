@@ -65,10 +65,28 @@ on_actions = {
 				multiply_variable = {
 					surplus_rubber = -1
 				}
+				####### Calculates Shortage Length and Controls Stockpile Release ########
 				if = {
 					limit = {
 						check_variable = {
 							needed_rubber < 0
+						}
+					}
+					set_variable = {
+						needed_rubber = 0
+					}
+					set_variable = {
+						rubber_shortage_length = 0
+					}
+				} else = {
+					add_to_variable = {
+						rubber_shortage_length = 1
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							rubber_shortage_length < min_days_of_shortage_for_withdrawal
 						}
 					}
 					set_variable = {
@@ -168,14 +186,6 @@ on_actions = {
 				set_variable = {
 					total_grain_surplus = surplus_grain
 				}
-				if = {
-					limit = {
-						is_ai = yes
-					}
-					subtract_from_variable = {
-						total_grain_surplus = simulated_resource_need
-					}
-				}
 				##############################################################################
 				# Calculate Needed Resources
 				set_variable = {
@@ -193,10 +203,28 @@ on_actions = {
 				multiply_variable = {
 					surplus_grain = -1
 				}
+				####### Calculates Shortage Length and Controls Stockpile Release ########
 				if = {
 					limit = {
 						check_variable = {
 							needed_grain < 0
+						}
+					}
+					set_variable = {
+						needed_grain = 0
+					}
+					set_variable = {
+						grain_shortage_length = 0
+					}
+				} else = {
+					add_to_variable = {
+						grain_shortage_length = 1
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							grain_shortage_length < min_days_of_shortage_for_withdrawal
 						}
 					}
 					set_variable = {
@@ -295,14 +323,6 @@ on_actions = {
 				set_variable = {
 					total_coal_surplus = surplus_coal
 				}
-				if = {
-					limit = {
-						is_ai = yes
-					}
-					subtract_from_variable = {
-						total_coal_surplus = simulated_resource_need
-					}
-				}
 				##############################################################################
 				# Calculate Needed Resources
 				set_variable = {
@@ -320,10 +340,28 @@ on_actions = {
 				multiply_variable = {
 					surplus_coal = -1
 				}
+				####### Calculates Shortage Length and Controls Stockpile Release ########
 				if = {
 					limit = {
 						check_variable = {
 							needed_coal < 0
+						}
+					}
+					set_variable = {
+						needed_coal = 0
+					}
+					set_variable = {
+						coal_shortage_length = 0
+					}
+				} else = {
+					add_to_variable = {
+						coal_shortage_length = 1
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							coal_shortage_length < min_days_of_shortage_for_withdrawal
 						}
 					}
 					set_variable = {

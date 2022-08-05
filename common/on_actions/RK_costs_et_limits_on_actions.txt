@@ -8,10 +8,10 @@ on_actions = {
 						base_rubber_limit = 200
 					}
 					set_variable = {
-						base_grain_limit = 350
+						base_grain_limit = 1000
 					}
 					set_variable = {
-						base_coal_limit = 700
+						base_coal_limit = 500
 					}
 					# sets starting limit values to the base value
 					set_variable = {
@@ -46,12 +46,18 @@ on_actions = {
 				set_variable = {
 					num_of_synths = 0
 				}
+				set_variable = {
+					num_of_doks = 0
+				}
 				every_controlled_state = {
 					add_to_variable = {
 						ROOT.total_infrastructure_level = infrastructure_level
 					}
 					add_to_variable = {
 						ROOT.num_of_synths = building_level@synthetic_refinery
+					}
+					add_to_variable = {
+						ROOT.num_of_doks = building_level@dockyards
 					}
 				}
 				# Calculate Coal needed by nation
@@ -127,6 +133,14 @@ on_actions = {
 	on_weekly = {
 		effect = {
 			ROOT = {
+				set_variable = {
+					threat_multiplier = global.threat
+				}
+				clamp_variable = {
+					var = threat_multiplier
+					max = 1
+					min = 0.35
+				}
 				# Values were chosen using britain as baseline
 				# With these values Britain would be able to run off stockpiles for 1 full year assuming no extra infrastructure and WT is at 100%
 				# grain
@@ -137,10 +151,7 @@ on_actions = {
 					grain_limit = 300	# grain stockpile per infrastructure level
 				}
 				multiply_variable = {
-					grain_limit = global.threat
-				}
-				add_to_variable = {
-					grain_limit = base_grain_limit
+					grain_limit = threat_multiplier
 				}
 				if = {
 					limit = {
@@ -160,10 +171,7 @@ on_actions = {
 					coal_limit = 600	# coal stockpile per infrastructure level
 				}
 				multiply_variable = {
-					coal_limit = global.threat
-				}
-				add_to_variable = {
-					coal_limit = base_coal_limit
+					coal_limit = threat_multiplier
 				}
 				if = {
 					limit = {
@@ -184,10 +192,7 @@ on_actions = {
 					rubber_limit = 175	# rubber stockpile per infrastructure level
 				}
 				multiply_variable = {
-					rubber_limit = global.threat
-				}
-				add_to_variable = {
-					rubber_limit = base_rubber_limit
+					rubber_limit = threat_multiplier
 				}
 				if = {
 					limit = {
