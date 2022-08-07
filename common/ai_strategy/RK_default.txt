@@ -34,7 +34,22 @@ default_unit_production = { #If adding country-unique ones, bear in mind that th
 	}
 	ai_strategy = {
 		type = building_target
+		id = coal_distribution_facility
+		value = 0
+	}
+	ai_strategy = {
+		type = building_target
 		id = rubber_sink
+		value = 0
+	}
+	ai_strategy = {
+		type = building_target
+		id = steel_sink
+		value = 0
+	}
+	ai_strategy = {
+		type = building_target
+		id = aluminum_sink
 		value = 0
 	}
 	ai_strategy = {

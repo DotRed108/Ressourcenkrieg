@@ -1,0 +1,8 @@
+﻿l_russian:
+  country_resource_cost_grain:0 "Зерно"
+  country_resource_cost_coal:0 "Уголь"
+  RK_coal_shortage:0 "Дефицит угля"
+  RK_grain_shortage:0 "Дефицит зерна"
+  core_population_death_count: "Наши граждане, умирающие от голода"
+  occupied_population_death_count: "Оккупированное население, умирающее от голода"
+  rubber_production_disrupted: "Прекращение производства резины"

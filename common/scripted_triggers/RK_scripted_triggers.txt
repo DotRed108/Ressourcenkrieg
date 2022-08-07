@@ -12,6 +12,36 @@ is_playing_kaiserreich = {
 		}
 	}
 }
+is_playing_greater_novosibirsk = {
+	OR = {
+		AND = {
+			country_exists = NOV
+			country_exists = SRR
+			country_exists = ING
+			country_exists = HER
+			country_exists = TUL
+			country_exists = GUK
+			country_exists = ZIO
+		}
+		check_variable = {
+			global.is_playing_greater_novosibirsk = 1
+		}
+	}
+}
+is_playing_rt56 = {
+	OR = {
+		AND = {
+			country_exists = ADR
+			ENG = {
+				controls_state = 865
+				controls_state = 866
+			}
+		}
+		check_variable = {
+			global.is_playing_rt56 = 1
+		}
+	}
+}
 is_playing_vanilla = {
 	check_variable = {
 		global.is_playing_vanilla = 1

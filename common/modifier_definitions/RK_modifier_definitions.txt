@@ -1,0 +1,36 @@
+core_population_death_count = {
+	color_type = bad
+	value_type = number
+	precision = 0
+	postfix = daily
+	category = country
+}
+
+occupied_population_death_count = {
+	color_type = bad
+	value_type = number
+	precision = 0
+	postfix = daily
+	category = country
+}
+
+rubber_production_disrupted = {
+	color_type = bad
+	value_type = number
+	precision = 0
+	category = country
+}
+
+steel_production_disrupted = {
+	color_type = bad
+	value_type = number
+	precision = 0
+	category = country
+}
+
+aluminum_production_disrupted = {
+	color_type = bad
+	value_type = number
+	precision = 0
+	category = country
+}

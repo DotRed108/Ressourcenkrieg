@@ -1,0 +1,13 @@
+﻿l_russian:
+  player_infantry_equipment_0:0 "Базовое пехотное снаряжение"
+  player_infantry_equipment_0_short:0 "Базовое пех. снар."
+  player_infantry_equipment_0_desc:0 "Базовое снаряжение пехотинца времён Первой Мировой"
+  player_infantry_equipment_1:0 "Пехотное снаряжение I"
+  player_infantry_equipment_1_short:0 "Оружие I"
+  player_infantry_equipment_1_desc:0 "Личное оружие и снаряжение пехотных рот, а также различные другие предметы снаряжения, необходимые солдату."
+  player_infantry_equipment_2:0 "Пехотное снаряжение II"
+  player_infantry_equipment_2_short:0 "Оружие II"
+  player_infantry_equipment_2_desc:0 "Личное оружие и снаряжение пехотных рот, а также различные другие предметы снаряжения, необходимые солдату. Также включает в себя ручные пулемёты и противотанковые средства."
+  player_infantry_equipment_3:0 "Пехотное снаряжение III"
+  player_infantry_equipment_3_short:0 "Оружие  III"
+  player_infantry_equipment_3_desc:0 "Личное оружие и снаряжение пехотных рот, а также различные другие предметы снаряжения, необходимые солдату. Включает в себя штурмовые винтовки и реактивные гранатомёты"

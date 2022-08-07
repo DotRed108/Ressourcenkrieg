@@ -1,4 +1,4 @@
-# percentage_of_factories_filled and its refinery counterpart ultimately ends up 
+# percentage_of_factories_filled and its refinery counterpart end up 
 # having the value of the percentage of factories not filled
 on_actions = {
 	#################### MOST SHORTAGE PENALTIES CALCULATED HERE ##########################
@@ -283,7 +283,7 @@ on_actions = {
 						if = {
 							limit = {
 								check_variable = {
-									total_synth_cost > 0
+									total_resource_building_cost > 0
 								}
 							}
 							# Prioritize Refineries Law
@@ -300,7 +300,7 @@ on_actions = {
 									max = 1
 								}
 								set_variable = {
-									num_of_refineries_filled = total_synth_cost
+									num_of_refineries_filled = total_resource_building_cost
 								}
 								multiply_variable = {
 									num_of_refineries_filled = percentage_of_refineries_filled
@@ -315,7 +315,7 @@ on_actions = {
 									percentage_of_refineries_filled = num_of_refineries_filled
 								}
 								divide_variable = {
-									percentage_of_refineries_filled = total_synth_cost
+									percentage_of_refineries_filled = total_resource_building_cost
 								}
 								# find how many factories can be fueled
 								set_variable = {
@@ -373,7 +373,7 @@ on_actions = {
 									percentage_of_refineries_filled = num_of_refineries_filled
 								}
 								divide_variable = {
-									percentage_of_refineries_filled = total_synth_cost
+									percentage_of_refineries_filled = total_resource_building_cost
 								}
 							}
 							# Fuel Refineries first Law
@@ -385,7 +385,7 @@ on_actions = {
 									percentage_of_refineries_filled = available_coal
 								}
 								divide_variable = {
-									percentage_of_refineries_filled = total_synth_cost
+									percentage_of_refineries_filled = total_resource_building_cost
 								}
 								clamp_variable = {
 									var = percentage_of_refineries_filled
@@ -396,7 +396,7 @@ on_actions = {
 									percentage_of_factories_filled = available_coal
 								}
 								subtract_from_variable = {
-									percentage_of_factories_filled = total_synth_cost
+									percentage_of_factories_filled = total_resource_building_cost
 								}
 								divide_variable = {
 									percentage_of_factories_filled = total_factory_cost
@@ -430,7 +430,7 @@ on_actions = {
 									percentage_of_refineries_filled = total_factory_cost
 								}
 								divide_variable = {
-									percentage_of_refineries_filled = total_synth_cost
+									percentage_of_refineries_filled = total_resource_building_cost
 								}
 								clamp_variable = {
 									var = percentage_of_refineries_filled
@@ -468,59 +468,6 @@ on_actions = {
 								max = 0
 							}
 						}
-
-						# Calculate rubber production penalty
-						if = {
-							limit = {
-								check_variable = {
-									percentage_of_refineries_filled < 0
-								}
-							}
-							set_variable = {
-								rubber_penalty = num_of_synths
-							}
-							multiply_variable = {
-								rubber_penalty = percentage_of_refineries_filled
-							}
-							# turns positive
-							multiply_variable = {
-								rubber_penalty = -1
-							}
-							if = {
-								limit = {
-									has_tech = rubber_processing
-								}
-								multiply_variable = {
-									rubber_penalty = 2
-								}
-							} else_if = {
-								limit = {
-									has_tech = improved_rubber_processing
-								}
-								multiply_variable = {
-									rubber_penalty = 3
-								}
-							} else_if = {
-								limit = {
-									has_tech = advanced_rubber_processing
-								}
-								multiply_variable = {
-									rubber_penalty = 4
-								}
-							} else_if = {
-								limit = {
-									has_tech = modern_rubber_processing
-								}
-								multiply_variable = {
-									rubber_penalty = 5
-								}
-							}
-							round_variable = rubber_penalty
-						} else = {
-							set_variable = {
-								rubber_penalty = 0
-							}
-						}
 						
 						# Cap the shortage penalty for players and ai
 						set_variable = {
@@ -549,6 +496,238 @@ on_actions = {
 								modifier = RK_coal_shortage
 							}
 						}
+					}
+				}
+			}
+		}
+	}
+
+	############# CALCULATES PRODUCTION PENALTIES FOR RESOURCES (usually just rubber) ##############
+	on_weekly = {
+		effect = {
+			ROOT = {
+				if = {
+					limit = {
+						check_variable = {
+							percentage_of_refineries_filled < 0
+						}
+					}
+					set_variable = {
+						steel_penalty = 0
+					}
+					set_variable = {
+						aluminum_penalty = 0
+					}
+					set_variable = {
+						rubber_penalty = num_of_synths
+					}
+					multiply_variable = {
+						rubber_penalty = percentage_of_refineries_filled
+					}
+					# turns positive
+					multiply_variable = {
+						rubber_penalty = -1
+					}
+					if = { # rt56 has its own resource production buildings
+						limit = {
+							is_playing_rt56 = yes
+						}
+						set_variable = {
+							rubber_penalty_rt56 = num_of_rubber_refineries
+						}
+						multiply_variable = {
+							rubber_penalty_rt56 = 4
+						}
+						multiply_variable = {
+							rubber_penalty_rt56 = percentage_of_refineries_filled
+						}
+						multiply_variable = {
+							rubber_penalty_rt56 = -1
+						}
+						set_variable = {
+							rubber_tech_multiplier = 1
+						}
+						if = { # rubber upgrade 1
+							limit = {
+								has_tech = rubber_plant_b
+							}
+							add_to_variable = {
+								rubber_tech_multiplier = 0.5
+							}
+						}
+						else_if = { # rubber upgrade 2
+							limit = {
+								has_tech = rubber_plant_c
+							}
+							add_to_variable = {
+								rubber_tech_multiplier = 0.5
+							}
+						}
+						else_if = { # rubber upgrade 3
+							limit = {
+								has_tech = rubber_plant_d
+							}
+							add_to_variable = {
+								rubber_tech_multiplier = 0.5
+							}
+						}
+						else_if = { # rubber upgrade butadiene
+							limit = {
+								has_tech = butadiene_processing
+							}
+							add_to_variable = {
+								rubber_tech_multiplier = 0.5
+							}
+						}
+						multiply_variable = {
+							rubber_penalty_rt56 = rubber_tech_multiplier
+						}
+						#### STEEL ####
+						set_variable = {
+							steel_penalty_rt56 = num_of_steel_mills
+						}
+						multiply_variable = {
+							steel_penalty_rt56 = 4
+						}
+						multiply_variable = {
+							steel_penalty_rt56 = percentage_of_refineries_filled
+						}
+						multiply_variable = {
+							steel_penalty_rt56 = -1
+						}
+						set_variable = {
+							steel_tech_multiplier = 1
+						}
+						if = { # steel upgrade 1
+							limit = {
+								has_tech = steel_production_2
+							}
+							add_to_variable = {
+								steel_tech_multiplier = 0.5
+							}
+						}
+						else_if = { # steel upgrade 2
+							limit = {
+								has_tech = steel_production_3
+							}
+							add_to_variable = {
+								steel_tech_multiplier = 0.5
+							}
+						}
+						else_if = { # steel upgrade 3
+							limit = {
+								has_tech = steel_production_4
+							}
+							add_to_variable = {
+								steel_tech_multiplier = 0.5
+							}
+						}
+						multiply_variable = {
+							steel_penalty_rt56 = steel_tech_multiplier
+						}
+						set_variable = {
+							aluminum_penalty_rt56 = num_of_alum_mills
+						}
+						#### ALUMINUM ####
+						multiply_variable = {
+							aluminum_penalty_rt56 = 4
+						}
+						multiply_variable = {
+							aluminum_penalty_rt56 = percentage_of_refineries_filled
+						}
+						multiply_variable = {
+							aluminum_penalty_rt56 = -1
+						}
+						set_variable = {
+							aluminum_tech_multiplier = 1
+						}
+						if = { # aluminum upgrade 1
+							limit = {
+								has_tech = aluminum_production_2
+							}
+							add_to_variable = {
+								aluminum_tech_multiplier = 0.5
+							}
+						}
+						else_if = { # aluminum upgrade 2
+							limit = {
+								has_tech = aluminum_production_3
+							}
+							add_to_variable = {
+								aluminum_tech_multiplier = 0.5
+							}
+						}
+						else_if = { # aluminum upgrade 3
+							limit = {
+								has_tech = aluminum_production_4
+							}
+							add_to_variable = {
+								aluminum_tech_multiplier = 0.5
+							}
+						}
+						multiply_variable = {
+							aluminum_penalty_rt56 = aluminum_tech_multiplier
+						}
+					}
+					else_if = {
+						limit = {
+							is_playing_rt56 = no
+						}
+						if = { # rubber upgrade 1
+							limit = {
+								has_tech = rubber_processing
+							}
+							multiply_variable = {
+								rubber_penalty = 2
+							}
+						} 
+						else_if = { # rubber upgrade 2
+							limit = {
+								has_tech = improved_rubber_processing
+							}
+							multiply_variable = {
+								rubber_penalty = 3
+							}
+						} 
+						else_if = { # rubber upgrade 3
+							limit = {
+								has_tech = advanced_rubber_processing
+							}
+							multiply_variable = {
+								rubber_penalty = 4
+							}
+						} 
+						else_if = { # rubber upgrade 4
+							limit = {
+								has_tech = modern_rubber_processing
+							}
+							multiply_variable = {
+								rubber_penalty = 5
+							}
+						}
+					}
+					add_to_variable = {
+						aluminum_penalty = aluminum_penalty_rt56
+					}
+					add_to_variable = {
+						steel_penalty = steel_penalty_rt56
+					}
+					add_to_variable = {
+						rubber_penalty = rubber_penalty_rt56
+					}
+					round_variable = steel_penalty
+					round_variable = aluminum_penalty
+					round_variable = rubber_penalty
+				} 
+				else = {
+					set_variable = {
+						rubber_penalty = 0
+					}
+					set_variable = {
+						steel_penalty = 0
+					}
+					set_variable = {
+						aluminum_penalty = 0
 					}
 				}
 			}
@@ -916,6 +1095,66 @@ on_actions = {
 					}
 					set_variable = {
 						last_rubber_penalty = 0
+					}
+				}
+				### This is where steel penalty is applied
+				add_offsite_building = {
+					type = steel_sink
+					level = last_steel_penalty
+				}
+				if = {
+					limit = {
+						has_dynamic_modifier = {
+							modifier = RK_coal_shortage
+						}
+					}
+					add_offsite_building = {
+						type = steel_sink
+						level = steel_penalty
+					}
+					set_variable = {
+						last_steel_penalty = steel_penalty
+					}
+					# turns negative
+					multiply_variable = {
+						last_steel_penalty = -1
+					}
+				} else = {
+					set_variable = {
+						steel_penalty = 0
+					}
+					set_variable = {
+						last_steel_penalty = 0
+					}
+				}
+				### This is where aluminum penalty is applied
+				add_offsite_building = {
+					type = aluminum_sink
+					level = last_aluminum_penalty
+				}
+				if = {
+					limit = {
+						has_dynamic_modifier = {
+							modifier = RK_coal_shortage
+						}
+					}
+					add_offsite_building = {
+						type = aluminum_sink
+						level = aluminum_penalty
+					}
+					set_variable = {
+						last_aluminum_penalty = aluminum_penalty
+					}
+					# turns negative
+					multiply_variable = {
+						last_aluminum_penalty = -1
+					}
+				} else = {
+					set_variable = {
+						aluminum_penalty = 0
+					}
+					set_variable = {
+						last_aluminum_penalty = 0
 					}
 				}
 			}

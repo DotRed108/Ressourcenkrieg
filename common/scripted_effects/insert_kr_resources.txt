@@ -1,0 +1,1175 @@
+insert_kr_resources = {
+	# Union of Britain
+	add_resource = {
+		type = oil
+		amount = -4
+		state = 121
+	}
+	add_resource = {
+		type = coal
+		amount = 124
+		state = 122
+	}
+	add_resource = {
+		type = grain
+		amount = 10
+		state = 125
+	}
+	add_resource = {
+		type = oil
+		amount = -1
+		state = 127
+	}
+	add_resource = {
+		type = oil
+		amount = -7
+		state = 129
+	}
+	add_resource = {
+		type = coal
+		amount = 85
+		state = 130
+	}
+	add_resource = {
+		type = coal
+		amount = 22
+		state = 132
+	}
+	add_resource = {
+		type = coal
+		amount = 9
+		state = 133
+	}
+	add_resource = {
+		type = oil
+		amount = -3
+		state = 133
+	}
+	add_resource = {
+		type = grain
+		amount = 2
+		state = 136
+	}
+	add_resource = {
+		type = coal
+		amount = 16
+		state = 957
+	}
+	# Commune of France
+	add_resource = {
+		type = grain
+		amount = 33
+		state = 31
+	}
+	add_resource = {
+		type = grain
+		amount = 14
+		state = 16
+	}
+	add_resource = {
+		type = grain
+		amount = 22
+		state = 23
+	}
+	add_resource = {
+		type = grain
+		amount = 15
+		state = 33
+	}
+	add_resource = {
+		type = grain
+		amount = 36
+		state = 33
+	}
+	add_resource = {
+		type = coal
+		amount = 17
+		state = 17
+	}
+	# add_resource = {
+	# 	type = oil
+	# 	amount = -1
+	# 	state = 26
+	# }
+	# add_resource = {
+	# 	type = oil
+	# 	amount = -1
+	# 	state = 27
+	# }
+	add_resource = {
+		type = coal
+		amount = 4
+		state = 763
+	}
+	# Germany
+	add_resource = {
+		type = coal
+		amount = 43
+		state = 57
+	}
+	add_resource = {
+		type = coal
+		amount = 116
+		state = 51
+	}
+	add_resource = {
+		type = coal
+		amount = 62
+		state = 42
+	}
+	add_resource = {
+		type = coal
+		amount = 23
+		state = 65
+	}
+	add_resource = {
+		type = coal
+		amount = 14
+		state = 66
+	}
+	add_resource = {
+		type = grain
+		amount = 8
+		state = 50
+	}
+	add_resource = {
+		type = grain
+		amount = 5
+		state = 62
+	}
+	add_resource = {
+		type = grain
+		amount = 9
+		state = 147
+	}
+	add_resource = {
+		type = coal
+		amount = 27
+		state = 67
+	}
+	# Bohemia
+	add_resource = {
+		type = coal
+		amount = 24
+		state = 69
+	}
+	# Austria 
+	add_resource = {
+		type = coal
+		amount = 19
+		state = 775
+	}
+	# Hungary 
+	add_resource = {
+		type = grain
+		amount = 31
+		state = 82
+	}
+	add_resource = {
+		type = grain
+		amount = 21
+		state = 154
+	}
+	add_resource = {
+		type = grain
+		amount = 12
+		state = 84
+	}
+	add_resource = {
+		type = grain
+		amount = 15
+		state = 45
+	}
+	add_resource = {
+		type = coal
+		amount = 3
+		state = 155
+	}
+	# Ireland
+	add_resource = {
+		type = coal
+		amount = 12
+		state = 134
+	}
+	add_resource = {
+		type = coal
+		amount = 6
+		state = 113
+	}
+	add_resource = {
+		type = grain
+		amount = 4
+		state = 119
+	}
+	# USA! USA! USA! USA! USA! USA! USA! USA! USA! USA! USA! USA! USA! USA! USA! USA! USA! USA! USA! USA! USA!
+	add_resource = {
+		type = coal
+		amount = 14
+		state = 368
+	}
+	add_resource = {
+		type = coal
+		amount = 31
+		state = 367
+	}
+	add_resource = {
+		type = coal
+		amount = 14
+		state = 381
+	}
+	add_resource = {
+		type = coal
+		amount = 133
+		state = 929
+	}
+	add_resource = {
+		type = coal
+		amount = 100
+		state = 975
+	}
+	add_resource = {
+		type = coal
+		amount = 11
+		state = 395
+	}
+	add_resource = {
+		type = coal
+		amount = 22
+		state = 396
+	}
+	add_resource = {
+		type = coal
+		amount = 53
+		state = 261
+	}
+	add_resource = {
+		type = coal
+		amount = 23
+		state = 375
+	}
+	add_resource = {
+		type = grain
+		amount = 14
+		state = 375
+	}
+	add_resource = {
+		type = grain
+		amount = 20
+		state = 368
+	}
+	add_resource = {
+		type = grain
+		amount = 32
+		state = 365
+	}
+	add_resource = {
+		type = grain
+		amount = 18
+		state = 369
+	}
+	add_resource = {
+		type = coal
+		amount = 17
+		state = 369
+	}
+	add_resource = {
+		type = grain
+		amount = 25
+		state = 390
+	}
+	add_resource = {
+		type = grain
+		amount = 43
+		state = 384
+	}
+	add_resource = {
+		type = grain
+		amount = 41
+		state = 384
+	}
+	add_resource = {
+		type = grain
+		amount = 42
+		state = 383
+	}
+	add_resource = {
+		type = grain
+		amount = 32
+		state = 391
+	}
+	add_resource = {
+		type = grain
+		amount = 62
+		state = 392
+	}
+	add_resource = {
+		type = grain
+		amount = 25
+		state = 373
+	}
+	add_resource = {
+		type = grain
+		amount = 35
+		state = 395
+	}
+	add_resource = {
+		type = grain
+		amount = 29
+		state = 396
+	}
+	add_resource = {
+		type = grain
+		amount = 19
+		state = 261
+	}
+	add_resource = {
+		type = grain
+		amount = 16
+		state = 975
+	}
+	add_resource = {
+		type = grain
+		amount = 7
+		state = 357
+	}
+	# OH Canada
+	add_resource = {
+		type = grain
+		amount = 16
+		state = 469
+	}
+	add_resource = {
+		type = grain
+		amount = 7
+		state = 470
+	}
+	add_resource = {
+		type = coal
+		amount = 32
+		state = 470
+	}
+	add_resource = {
+		type = coal
+		amount = 18
+		state = 464
+	}
+	# Nationalist France
+	add_resource = {
+		type = grain
+		amount = 8
+		state = 458
+	}
+	# Morrocco
+	add_resource = {
+		type = grain
+		amount = 3
+		state = 461
+	}
+	add_resource = {
+		type = coal
+		amount = 2
+		state = 462
+	}
+	# Spain
+	add_resource = {
+		type = grain
+		amount = 10
+		state = 174
+	}
+	add_resource = {
+		type = grain
+		amount = 8
+		state = 951
+	}
+	add_resource = {
+		type = grain
+		amount = 10
+		state = 175
+	}
+	add_resource = {
+		type = grain
+		amount = 8
+		state = 169
+	}
+	add_resource = {
+		type = coal
+		amount = 4
+		state = 174
+	}
+	# Belgium 
+	add_resource = {
+		type = coal
+		amount = 18
+		state = 34
+	}
+	# Poland
+	add_resource = {
+		type = coal
+		amount = 26
+		state = 90
+	}
+	#Russia
+	add_resource = {
+		type = coal
+		amount = 16
+		state = 223
+	}
+	add_resource = {
+		type = coal
+		amount = 18
+		state = 219
+	}
+	add_resource = {
+		type = coal
+		amount = 7
+		state = 653
+	}
+	add_resource = {
+		type = coal
+		amount = 10
+		state = 567
+	}
+	add_resource = {
+		type = coal
+		amount = 12
+		state = 574
+	}
+	add_resource = {
+		type = grain
+		amount = 7
+		state = 217
+	}
+	add_resource = {
+		type = grain
+		amount = 11
+		state = 239
+	}
+	add_resource = {
+		type = grain
+		amount = 10
+		state = 581
+	}
+	add_resource = {
+		type = grain
+		amount = 8
+		state = 265
+	}
+	add_resource = {
+		type = grain
+		amount = 4
+		state = 40
+	}
+	add_resource = {
+		type = grain
+		amount = 7
+		state = 220
+	}
+	add_resource = {
+		type = grain
+		amount = 6
+		state = 222
+	}
+	add_resource = {
+		type = grain
+		amount = 10
+		state = 240
+	}
+	add_resource = {
+		type = grain
+		amount = 8
+		state = 257
+	}
+	add_resource = {
+		type = grain
+		amount = 4
+		state = 258
+	}
+	add_resource = {
+		type = grain
+		amount = 4
+		state = 260
+	}
+	# Don Kuban
+	add_resource = {
+		type = grain
+		amount = 16
+		state = 235
+	}
+	add_resource = {
+		type = grain
+		amount = 18
+		state = 237
+	}
+	add_resource = {
+		type = grain
+		amount = 23
+		state = 218
+	}
+	add_resource = {
+		type = grain
+		amount = 20
+		state = 234
+	}
+	# Alash
+	add_resource = {
+		type = grain
+		amount = 10
+		state = 590
+	}
+	# Ukraine
+	add_resource = {
+		type = coal
+		amount = 7
+		state = 202
+	}
+	add_resource = {
+		type = coal
+		amount = 6
+		state = 228
+	}
+	add_resource = {
+		type = grain
+		amount = 10
+		state = 228
+	}
+	add_resource = {
+		type = grain
+		amount = 15
+		state = 259
+	}
+	add_resource = {
+		type = grain
+		amount = 33
+		state = 203
+	}
+	add_resource = {
+		type = grain
+		amount = 8
+		state = 199
+	}
+	add_resource = {
+		type = grain
+		amount = 67
+		state = 200
+	}
+	add_resource = {
+		type = grain
+		amount = 49
+		state = 226
+	}
+	add_resource = {
+		type = grain
+		amount = 26
+		state = 821
+	}
+	# Romania
+	add_resource = {
+		type = grain
+		amount = 56
+		state = 78
+	}
+	add_resource = {
+		type = grain
+		amount = 18
+		state = 79
+	}
+	# Portugal
+	add_resource = {
+		type = grain
+		amount = 12
+		state = 939
+	}
+	add_resource = {
+		type = grain
+		amount = 11
+		state = 179
+	}
+	# Mozambique
+	add_resource = {
+		type = coal
+		amount = 6
+		state = 954
+	}
+	# Egypt 
+	add_resource = {
+		type = grain
+		amount = 2
+		state = 446
+	}
+	add_resource = {
+		type = grain
+		amount = 3
+		state = 447
+	}
+	add_resource = {
+		type = grain
+		amount = 2
+		state = 1008
+	}
+	add_resource = {
+		type = grain
+		amount = 1
+		state = 456
+	}
+	# Mittelafrika
+	add_resource = {
+		type = coal
+		amount = 4
+		state = 541
+	}
+	# Kenya
+	add_resource = {
+		type = grain
+		amount = 19
+		state = 547
+	}
+	add_resource = {
+		type = grain
+		amount = 8
+		state = 892
+	}
+	#Ethiopia
+	add_resource = {
+		type = grain
+		amount = 8
+		state = 919
+	}
+	# South Africa
+	add_resource = {
+		type = coal
+		amount = 2
+		state = 945
+	}
+	add_resource = {
+		type = coal
+		amount = 1
+		state = 947
+	}
+	add_resource = {
+		type = coal
+		amount = 12
+		state = 275
+	}
+	add_resource = {
+		type = coal
+		amount = 10
+		state = 719
+	}
+	# Rhodesia
+	add_resource = {
+		type = grain
+		amount = 16
+		state = 545
+	}
+	# Japan
+	add_resource = {
+		type = coal
+		amount = 15
+		state = 528
+	}
+	add_resource = {
+		type = coal
+		amount = 11
+		state = 531
+	}
+	add_resource = {
+		type = coal
+		amount = 18
+		state = 282
+	}
+	add_resource = {
+		type = grain
+		amount = 16
+		state = 536
+	}
+	add_resource = {
+		type = grain
+		amount = 14
+		state = 533
+	}
+	add_resource = {
+		type = grain
+		amount = 12
+		state = 534
+	}
+	add_resource = {
+		type = grain
+		amount = 2
+		state = 282
+	}
+	# Australasia
+	add_resource = {
+		type = coal
+		amount = 39
+		state = 285
+	}
+	add_resource = {
+		type = coal
+		amount = 19
+		state = 521
+	}
+	add_resource = {
+		type = grain
+		amount = 15
+		state = 285
+	}
+	add_resource = {
+		type = grain
+		amount = 15
+		state = 521
+	}
+	# New Zealand
+	add_resource = {
+		type = coal
+		amount = 8
+		state = 284
+	}
+	add_resource = {
+		type = coal
+		amount = 8
+		state = 723
+	}
+	add_resource = {
+		type = grain
+		amount = 1
+		state = 723
+	}
+	# CHINA
+	add_resource = {
+		type = coal
+		amount = 22
+		state = 328
+	}
+	add_resource = {
+		type = grain
+		amount = 4
+		state = 603
+	}
+	add_resource = {
+		type = coal
+		amount = 22
+		state = 1015
+	}
+	add_resource = {
+		type = grain
+		amount = 18
+		state = 714
+	}
+	add_resource = {
+		type = grain
+		amount = 20
+		state = 885
+	}
+	add_resource = {
+		type = coal
+		amount = 2
+		state = 605
+	}
+	add_resource = {
+		type = coal
+		amount = 14
+		state = 593
+	}
+	add_resource = {
+		type = coal
+		amount = 12
+		state = 743
+	}
+	add_resource = {
+		type = coal
+		amount = 10
+		state = 608
+	}
+	add_resource = {
+		type = grain
+		amount = 25
+		state = 717
+	}
+	add_resource = {
+		type = grain
+		amount = 18
+		state = 1064
+	}
+	add_resource = {
+		type = grain
+		amount = 42
+		state = 1047
+	}
+	add_resource = {
+		type = grain
+		amount = 36
+		state = 1059
+	}
+	add_resource = {
+		type = grain
+		amount = 6
+		state = 605
+	}
+	add_resource = {
+		type = grain
+		amount = 12
+		state = 800
+	}
+	add_resource = {
+		type = grain
+		amount = 14
+		state = 600
+	}
+	add_resource = {
+		type = grain
+		amount = 10
+		state = 1058
+	}
+	# German East Asia
+	add_resource = {
+		type = grain
+		amount = 12
+		state = 286
+	}
+	add_resource = {
+		type = grain
+		amount = 8
+		state = 857
+	}
+	# Siam
+	add_resource = {
+		type = grain
+		amount = 12
+		state = 289
+	}
+	add_resource = {
+		type = grain
+		amount = 20
+		state = 822
+	}
+	# Burma
+	add_resource = {
+		type = grain
+		amount = 18
+		state = 288
+	}
+	add_resource = {
+		type = grain
+		amount = 6
+		state = 72
+	}
+	# india
+	add_resource = {
+		type = coal
+		amount = 14
+		state = 424
+	}
+	add_resource = {
+		type = coal
+		amount = 11
+		state = 1057
+	}
+	add_resource = {
+		type = coal
+		amount = 33
+		state = 426
+	}
+	add_resource = {
+		type = coal
+		amount = 13
+		state = 966
+	}
+	add_resource = {
+		type = coal
+		amount = 17
+		state = 436
+	}
+	add_resource = {
+		type = grain
+		amount = 23
+		state = 440
+	}
+	add_resource = {
+		type = grain
+		amount = 21
+		state = 815
+	}
+	add_resource = {
+		type = grain
+		amount = 26
+		state = 437
+	}
+	add_resource = {
+		type = grain
+		amount = 20
+		state = 439
+	}
+	add_resource = {
+		type = grain
+		amount = 14
+		state = 438
+	}
+	add_resource = {
+		type = grain
+		amount = 12
+		state = 839
+	}
+	add_resource = {
+		type = grain
+		amount = 5
+		state = 936
+	}
+	add_resource = {
+		type = grain
+		amount = 10
+		state = 435
+	}
+	# Persia
+	add_resource = {
+		type = grain
+		amount = 10
+		state = 419
+	}
+	add_resource = {
+		type = grain
+		amount = 2
+		state = 416
+	}
+	# Ottoman Empire
+	add_resource = {
+		type = grain
+		amount = 11
+		state = 342
+	}
+	add_resource = {
+		type = grain
+		amount = 9
+		state = 346
+	}
+	add_resource = {
+		type = grain
+		amount = 10
+		state = 291
+	}
+	add_resource = {
+		type = grain
+		amount = 4
+		state = 676
+	}
+	add_resource = {
+		type = coal
+		amount = 5
+		state = 356
+	}
+	add_resource = {
+		type = coal
+		amount = 1
+		state = 342
+	}
+	add_resource = {
+		type = coal
+		amount = 2
+		state = 341
+	}
+	# Mexico
+	add_resource = {
+		type = coal
+		amount = 10
+		state = 480
+	}
+	add_resource = {
+		type = grain
+		amount = 21
+		state = 483
+	}
+	add_resource = {
+		type = grain
+		amount = 6
+		state = 484
+	}
+	add_resource = {
+		type = grain
+		amount = 5
+		state = 478
+	}
+	#Netherlands 
+	add_resource = {
+		type = coal
+		amount = 4
+		state = 978
+	}
+	# Dutch East Indies
+	add_resource = {
+		type = coal
+		amount = 19
+		state = 672
+	}
+	add_resource = {
+		type = grain
+		amount = 10
+		state = 335
+	}
+	add_resource = {
+		type = grain
+		amount = 16
+		state = 843
+	}
+	#illyria
+	add_resource = {
+		type = coal
+		amount = 4
+		state = 104
+	}
+	add_resource = {
+		type = grain
+		amount = 16
+		state = 109
+	}
+	# galacia
+	add_resource = {
+		type = grain
+		amount = 24
+		state = 713
+	}
+	#bulgaria
+	add_resource = {
+		type = coal
+		amount = 12
+		state = 767
+	}
+	add_resource = {
+		type = coal
+		amount = 12
+		state = 731
+	}
+	add_resource = {
+		type = grain
+		amount = 21
+		state = 772
+	}
+	add_resource = {
+		type = grain
+		amount = 15
+		state = 77
+	}
+	add_resource = {
+		type = grain
+		amount = 3
+		state = 731
+	}
+	add_resource = {
+		type = grain
+		amount = 3
+		state = 184
+	}
+	# SR Italy
+	add_resource = {
+		type = grain
+		amount = 8
+		state = 1004
+	}
+	add_resource = {
+		type = grain
+		amount = 4
+		state = 161
+	}
+	# Italian Republic
+	add_resource = {
+		type = grain
+		amount = 8
+		state = 160
+	}
+	# two sicilies
+	add_resource = {
+		type = grain
+		amount = 18
+		state = 115
+	}
+	#Sardinia 
+	add_resource = {
+		type = coal
+		amount = 18
+		state = 114
+	}
+	add_resource = {
+		type = grain
+		amount = 3
+		state = 114
+	}
+	# Sweden
+	add_resource = {
+		type = grain
+		amount = 4
+		state = 138
+	}
+	# Denmark
+	add_resource = {
+		type = grain
+		amount = 5
+		state = 99
+	}
+	# Finland
+	add_resource = {
+		type = grain
+		amount = 1
+		state = 863
+	}
+	add_resource = {
+		type = grain
+		amount = 1
+		state = 840
+	}
+	# Norway
+	add_resource = {
+		type = grain
+		amount = 2
+		state = 110
+	}
+	# Peru
+	add_resource = {
+		type = coal
+		amount = 12
+		state = 303
+	}
+	# Uraguay
+	add_resource = {
+		type = grain
+		amount = 2
+		state = 300
+	}
+	# Paraguay
+	add_resource = {
+		type = grain
+		amount = 4
+		state = 301
+	}
+	# argentina 
+	add_resource = {
+		type = grain
+		amount = 8
+		state = 902
+	}
+	add_resource = {
+		type = grain
+		amount = 22
+		state = 278
+	}
+	# chile
+	add_resource = {
+		type = grain
+		amount = 10
+		state = 279
+	}
+	# brazil
+	add_resource = {
+		type = grain
+		amount = 4
+		state = 502
+	}
+	add_resource = {
+		type = grain
+		amount = 3
+		state = 503
+	}
+	# venezuala
+	add_resource = {
+		type = coal
+		amount = 7
+		state = 1036
+	}
+}

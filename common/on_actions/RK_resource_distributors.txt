@@ -1,27 +1,4 @@
 on_actions = {
-	######################### Applies grain cost and requests distributors ######################
-	on_startup = {
-		effect = {
-			every_country = {
-				THIS = {
-					set_variable = {
-						grain_needed_by_people = max_manpower_k
-					}
-					divide_variable = {
-						grain_needed_by_people = 1000
-					}
-					round_variable = grain_needed_by_people
-					set_variable = {
-						last_grain_needed_distribution_facilities = grain_needed_by_people
-					}
-					add_offsite_building = {
-						type = grain_distribution_facility
-						level = grain_needed_by_people
-					}
-				}
-			}
-		}
-	}
 	######################## Activates Resource Distributors ######################
 	# on_daily = {
 	# 	effect = {
@@ -78,149 +55,89 @@ on_actions = {
 	# 		}
 	# 	}
 	# }
-	####################### Applies Grain cost from populations #########################
-	on_weekly = {
-		effect = {
-			ROOT = {
-				# This is where grain cost is applied
-				set_variable = {
-					grain_needed_by_distribution_facilities = grain_needed_by_people
-				}
-				# Rationing has to be done here before rounding
-				multiply_variable = {
-					grain_needed_by_distribution_facilities = rations
-				}
-				round_variable = grain_needed_by_distribution_facilities
-				add_offsite_building = {
-					type = grain_distribution_facility
-					level = grain_needed_by_distribution_facilities
-				}
-				multiply_variable = {
-					last_grain_needed_distribution_facilities = -1
-				}
-				add_offsite_building = {
-					type = grain_distribution_facility
-					level = last_grain_needed_distribution_facilities
-				}
-				set_variable = {
-					last_grain_needed_distribution_facilities = grain_needed_by_distribution_facilities
-				}
-			}
-		}
-	}
 	####################### Checks that countries have been given distributors ##################
 	on_daily = {
 		effect = {
 			ROOT = {
-				multiply_variable = {
-					last_simulated_resource_need = -1
-				}
-				add_offsite_building = {
-					type = coal_stockpile_facility
-					level = last_simulated_resource_need
-				}
-				add_offsite_building = {
-					type = grain_stockpile_facility
-					level = last_simulated_resource_need
-				}
-				set_variable = {
-					hit = resource_exported@grain
-				}
-				set_variable = {
-					simulated_resource_need = resource@grain
-				}
-				subtract_from_variable = {
-					simulated_resource_need = resource_produced@grain
-				}
-				subtract_from_variable = {
-					simulated_resource_need = resource_imported@grain
-				}
-				add_to_variable = {
-					simulated_resource_need = resource_exported@grain
-				}
-				multiply_variable = {
-					simulated_resource_need = -1
-				}
-				clamp_variable = {
-					var = simulated_resource_need
-					max = 999
-					min = 0
-				}
-				add_offsite_building = {
-					type = coal_stockpile_facility
-					level = simulated_resource_need
-				}
-				add_offsite_building = {
-					type = grain_stockpile_facility
-					level = simulated_resource_need
-				}
-				set_variable = {
-					last_simulated_resource_need = simulated_resource_need
-				}
-
-				######### Gives civilian doks out to try to get ai to make convoys #######
 				if = {
 					limit = {
-						NOT = {
-							check_variable = {
-								give_up = 1
-							}
-						}
+						is_ai = yes
 					}
+					multiply_variable = {
+						last_simulated_resource_need = -1
+					}
+					add_offsite_building = {
+						type = coal_stockpile_facility
+						level = last_simulated_resource_need
+					}
+					add_offsite_building = {
+						type = grain_stockpile_facility
+						level = last_simulated_resource_need
+					}
+					set_variable = {
+						simulated_resource_need = resource@grain
+					}
+					subtract_from_variable = {
+						simulated_resource_need = resource_produced@grain
+					}
+					subtract_from_variable = {
+						simulated_resource_need = resource_imported@grain
+					}
+					add_to_variable = {
+						simulated_resource_need = resource_exported@grain
+					}
+					multiply_variable = {
+						simulated_resource_need = -1
+					}
+					clamp_variable = {
+						var = simulated_resource_need
+						max = 999
+						min = 0
+					}
+					add_offsite_building = {
+						type = coal_stockpile_facility
+						level = simulated_resource_need
+					}
+					add_offsite_building = {
+						type = grain_stockpile_facility
+						level = simulated_resource_need
+					}
+					set_variable = {
+						last_simulated_resource_need = simulated_resource_need
+					}
+
+					######### Gives civilian doks out to try to get ai to make convoys #######
 					if = {
 						limit = {
-							check_variable = {
-								simulated_resource_need = 0
-							}
-							check_variable = {
-								added_offsite_cdoks < 11
-							}
-						}
-						add_offsite_building = {
-							type = civilian_dockyard
-							level = 1
-						}
-						add_to_variable = {
-							added_offsite_cdoks = 1
-						}
-					} 
-					else_if = {
-						limit = {
-							check_variable = {
-								simulated_resource_need = 0
-							}
-							check_variable = {
-								added_offsite_cdoks > 10
-							}
-							check_variable = {
-								added_capital_cdoks < 5
+							NOT = {
+								check_variable = {
+									give_up = 1
+								}
 							}
 						}
-						capital_scope = {
-							add_extra_state_shared_building_slots = 1
-							add_building_construction = {
+						if = {
+							limit = {
+								check_variable = {
+									simulated_resource_need = 0
+								}
+								check_variable = {
+									added_offsite_cdoks < 5
+								}
+							}
+							add_offsite_building = {
 								type = civilian_dockyard
 								level = 1
-								instant_build = yes
 							}
-						}
-						add_to_variable = {
-							added_capital_cdoks = 1
-						}
-					} 
-					else_if = {
-						limit = {
-							check_variable = {
-								added_offsite_cdoks > 10
+							add_to_variable = {
+								added_offsite_cdoks = 1
 							}
-							check_variable = {
-								added_capital_cdoks > 5
+						} 
+						else = {
+							set_variable = {
+								give_up = 1
 							}
-						}
-						set_variable = {
-							give_up = 1
-						}
-					} 
+						} 
+					}
 				}
 			}
 		}
@@ -240,24 +157,6 @@ on_actions = {
 					}
 					add_to_variable = {
 						added_offsite_cdoks = -1
-					}
-				}
-				if = {
-					limit = {
-						check_variable = {
-							added_capital_cdoks > 1
-						}
-					}
-					capital_scope = {
-						add_extra_state_shared_building_slots = -1
-						add_building_construction = {
-							type = civilian_dockyard
-							level = -1
-							instant_build = yes
-						}
-					}
-					add_to_variable = {
-						added_capital_cdoks = -1
 					}
 				}
 			}

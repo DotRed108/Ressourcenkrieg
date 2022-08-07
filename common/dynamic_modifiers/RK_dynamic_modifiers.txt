@@ -31,4 +31,6 @@ RK_coal_shortage = {
 	industrial_capacity_dockyard = factory_output_penalty
 	fuel_gain_factor_from_states = refinery_output_penalty
 	rubber_production_disrupted = rubber_penalty
+	steel_production_disrupted = steel_penalty
+	aluminum_production_disrupted = aluminum_penalty
 }

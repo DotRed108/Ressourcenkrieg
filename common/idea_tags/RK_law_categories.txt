@@ -1,0 +1,14 @@
+idea_categories = {
+	resource_management = {
+		slot = rationing_slot
+		slot = grain_prioritization_slot
+		slot = coal_prioritization_slot
+		slot = factory_shutdown_slot
+		slot = stockpile_focus_slot
+
+		ledger = hidden
+		
+		cost = 100
+		removal_cost = 0
+	}
+}

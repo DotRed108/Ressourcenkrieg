@@ -1,6 +1,7 @@
 on_actions = {
 	on_startup = {
 		effect = {
+			# Sets base limits
 			every_country = {
 				THIS = {
 					# sets base limits that every nation will have regardless of infrastructure
@@ -34,6 +35,38 @@ on_actions = {
 					}
 				}
 			}
+			# APPLIES INITIAL COAL AND GRAIN COST FOR EVERY NATION
+			every_country = {
+				THIS = {
+					set_variable = {
+						grain_needed_by_people = max_manpower_k
+					}
+					divide_variable = {
+						grain_needed_by_people = 1000
+					}
+					round_variable = grain_needed_by_people
+					set_variable = {
+						last_grain_needed_distribution_facilities = grain_needed_by_people
+					}
+					add_offsite_building = {
+						type = grain_distribution_facility
+						level = grain_needed_by_people
+					}
+					set_variable = {
+						coal_needed_by_factories_et_synths = num_of_owned_factories
+					}
+					add_to_variable = {
+						coal_needed_by_factories_et_synths = num_of_synths
+					}
+					add_offsite_building = {
+						type = coal_distribution_facility
+						level = num_of_owned_factories
+					}
+					set_variable = {
+						last_coal_needed_by_factories_et_synths = num_of_owned_factories
+					}
+				}
+			}
 		}
 	}
 	######################## CALCULATE RESOURCE COAL AND GRAIN COSTS ##################################
@@ -49,38 +82,120 @@ on_actions = {
 				set_variable = {
 					num_of_doks = 0
 				}
-				every_controlled_state = {
-					add_to_variable = {
-						ROOT.total_infrastructure_level = infrastructure_level
+				set_variable = {
+					num_of_mils = 0
+				}
+				set_variable = {
+					num_of_civs = 0
+				}
+				set_variable = {
+					num_of_steel_mills = 0
+				}
+				set_variable = {
+					num_of_alum_mills = 0
+				}
+				set_variable = {
+					num_of_rubber_refineries = 0
+				}
+				if = {
+					limit = {
+						is_playing_rt56 = yes
 					}
-					add_to_variable = {
-						ROOT.num_of_synths = building_level@synthetic_refinery
+					every_controlled_state = {
+						add_to_variable = {
+							ROOT.total_infrastructure_level = infrastructure_level
+						}
+						add_to_variable = {
+							ROOT.num_of_synths = building_level@synthetic_refinery
+						}
+						add_to_variable = {
+							ROOT.num_of_doks = building_level@dockyard
+						}
+						add_to_variable = {
+							ROOT.num_of_mils = building_level@arms_factory
+						}
+						add_to_variable = {
+							ROOT.num_of_civs = building_level@industrial_complex
+						}
+						add_to_variable = {
+							ROOT.num_of_steel_mills = building_level@steel_mill
+						}
+						add_to_variable = {
+							ROOT.num_of_alum_mills = building_level@aluminum_mill
+						}
+						add_to_variable = {
+							ROOT.num_of_rubber_refineries = building_level@rubber_refinery 
+						}
 					}
-					add_to_variable = {
-						ROOT.num_of_doks = building_level@dockyards
+				} 
+				else = {
+					every_controlled_state = {
+						add_to_variable = {
+							ROOT.total_infrastructure_level = infrastructure_level
+						}
+						add_to_variable = {
+							ROOT.num_of_synths = building_level@synthetic_refinery
+						}
+						add_to_variable = {
+							ROOT.num_of_doks = building_level@dockyard
+						}
+						add_to_variable = {
+							ROOT.num_of_mils = building_level@arms_factory
+						}
+						add_to_variable = {
+							ROOT.num_of_civs = building_level@industrial_complex
+						}
 					}
 				}
-				# Calculate Coal needed by nation
+				################### CALCULATES ALL COAL NEEDED BY NATION ######################
+				# # # # # # # # # # resource buildings # # # # # # # # 
 				set_variable = {
-					coal_needed_by_factories_et_synths = num_of_synths
+					total_rubber_refinery_cost = num_of_rubber_refineries
 				}
 				multiply_variable = {
-					coal_needed_by_factories_et_synths = 3
+					total_rubber_refinery_cost = 3
 				}
-				#################### THIS VARIABLE IS USED TO APPLY MODIFIERS ################
 				set_variable = {
-					total_synth_cost = coal_needed_by_factories_et_synths
+					total_synth_cost = num_of_synths
 				}
-				##############################################################################
+				multiply_variable = {
+					total_synth_cost = 3
+				}
+				set_variable = {
+					total_steel_mill_cost = num_of_steel_mills
+				}
+				set_variable = {
+					total_alum_mill_cost = num_of_alum_mills
+				}
+				set_variable = {
+					total_resource_building_cost = total_synth_cost
+				}
 				add_to_variable = {
-					coal_needed_by_factories_et_synths = num_of_controlled_factories
+					total_resource_building_cost = total_rubber_refinery_cost
 				}
-				#################### THIS VARIABLE IS USED TO APPLY MODIFIERS ################
+				add_to_variable = {
+					total_resource_building_cost = total_steel_mill_cost
+				}
+				add_to_variable = {
+					total_resource_building_cost = total_alum_mill_cost
+				}
+				# # # # # # # # factory buildings # # # # # # # # # #
+				set_variable = {
+					coal_needed_by_factories_et_synths = num_of_civs
+				}
+				add_to_variable = {
+					coal_needed_by_factories_et_synths = num_of_mils
+				}
+				add_to_variable = {
+					coal_needed_by_factories_et_synths = num_of_doks
+				}
+				# # # # # # # THIS VARIABLE IS USED TO APPLY MODIFIERS # # # # # # 
 				set_variable = {
 					total_factory_cost = coal_needed_by_factories_et_synths
 				}
-				subtract_from_variable = {
-					total_factory_cost = total_synth_cost
+				# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+				add_to_variable = {
+					coal_needed_by_factories_et_synths = total_resource_building_cost
 				}
 				##############################################################################
 				# Calculate Core and Occupied Population
@@ -128,7 +243,6 @@ on_actions = {
 			}
 		}
 	}
-
 	############################### CALCULATE STOCKPILE LIMITS ############################################
 	on_weekly = {
 		effect = {
@@ -203,6 +317,56 @@ on_actions = {
 					}
 				}
 				round_variable = rubber_limit
+			}
+		}
+	}
+	####################### Applies Grain cost from populations #########################
+	on_weekly = {
+		effect = {
+			ROOT = {
+				set_variable = {
+					grain_needed_by_distribution_facilities = grain_needed_by_people
+				}
+				# Rationing has to be done before rounding
+				multiply_variable = {
+					grain_needed_by_distribution_facilities = rations
+				}
+				round_variable = grain_needed_by_distribution_facilities
+				add_offsite_building = {
+					type = grain_distribution_facility
+					level = grain_needed_by_distribution_facilities
+				}
+				multiply_variable = {
+					last_grain_needed_distribution_facilities = -1
+				}
+				add_offsite_building = {
+					type = grain_distribution_facility
+					level = last_grain_needed_distribution_facilities
+				}
+				set_variable = {
+					last_grain_needed_distribution_facilities = grain_needed_by_distribution_facilities
+				}
+			}
+		}
+	}
+	####################### THIS IS WHERE COAL COSTS ARE APPLIED ##################
+	on_weekly = {
+		effect = {
+			ROOT = {
+				add_offsite_building = {
+					type = coal_distribution_facility
+					level = coal_needed_by_factories_et_synths
+				}
+				multiply_variable = {
+					last_coal_needed_by_factories_et_synths = -1
+				}
+				add_offsite_building = {
+					type = coal_distribution_facility
+					level = last_coal_needed_by_factories_et_synths
+				}
+				set_variable = {
+					last_coal_needed_by_factories_et_synths = coal_needed_by_factories_et_synths
+				}
 			}
 		}
 	}
